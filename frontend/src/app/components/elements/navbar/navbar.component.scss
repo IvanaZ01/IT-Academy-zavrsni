@@ -1,0 +1,33 @@
+
+
+.nav {
+    background-color: $dark;
+    position: relative;
+    height: 100vh;
+    width: 200px;
+    transition: all 200ms ease;
+    
+    ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        li {
+            a{
+                display: block;
+                padding: .5em;
+                width: 100%;
+                text-decoration: none;
+                color: $white;
+
+                &:hover{
+                    background-color: $medium;
+                }
+            }
+        }
+    }
+}
+
+// .nav-closed{
+//     left: -200px;
+// }
