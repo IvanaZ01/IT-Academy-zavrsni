@@ -15,10 +15,23 @@ app.use(express.json())
 app.use(cors());
 
 //user actions
-const { createUser } = require('./controllers/user/userController');
+const createUser = require('./controllers/user/createUser');
+
+//group actions
+const createGroup = require('./controllers/group/createGroup')
+
+//teacher actions
+const createTeacher = require('./controllers/teacher/createTeacher')
 
 //user routes 
-app.get('/createUser', createUser)
+app.post('/create-user', createUser)
+
+//group routes
+app.post('/create-group', createGroup)
+
+// teacher actions
+app.post('/create-teacher', createTeacher)
+
 
 const PORT = process.env.PORT 
 app.listen(PORT, ()=>{
