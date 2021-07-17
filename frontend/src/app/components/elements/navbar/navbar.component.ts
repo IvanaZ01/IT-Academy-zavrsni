@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,12 +10,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class NavbarComponent implements OnInit {
   navOpen = true
   @Output() open = new EventEmitter();
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   navToggle(){
     this.open.emit(this.navOpen)
+  }
+
+  navigate(link:string){
+    this.router.navigateByUrl(link)
   }
 }

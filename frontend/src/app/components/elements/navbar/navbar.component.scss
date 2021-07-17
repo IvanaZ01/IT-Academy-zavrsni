@@ -1,5 +1,11 @@
+.burger{
+    position: absolute;
+    left: 12px;
+    top: 22px;
+}
+
 .burger-menu{
-    position: relative;
+    position: absolute;
     width: 30px;
     height: 6px;
     background-color: #333;
@@ -60,6 +66,15 @@
     &.closed{
         transition: all 200ms ease;
         left: -200px;
+    }
+}
+
+.login-btn{
+    margin-left: 3.5em;
+    border: 2px solid #80298d;
+    color: #333;
+    &:hover{
+        background-color: lighten(#CF30CF, 40%);
     }
 }
 

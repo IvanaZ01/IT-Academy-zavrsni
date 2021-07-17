@@ -1,0 +1,30 @@
+.card{
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    &-img{
+        display: block;
+        width: 300px;
+    }
+
+    .form{
+        width: 550px;
+        padding: 2em;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .card-img{
+        display: none;
+    }
+}
+
+.login-btn{
+    border: 2px solid #80298d;
+    color: #333;
+    width: 100px;
+    &:hover{
+        background-color: lighten(#CF30CF, 40%);
+    }
+}

@@ -1,1 +1,40 @@
-<p>login works!</p>
+<div class="card d-flex flex-row justify-content-between shadow">
+
+    <div class="form">
+        <h1 class="mb-5">Login </h1>
+        <div class="form-group mb-3">
+          <input 
+          [(ngModel)]="user.username"
+          type="text" 
+          class="form-control" 
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp" 
+          placeholder="Enter username">
+        </div>
+        <div class="form-group mb-3">
+          <input 
+          [(ngModel)]="user.password"
+          type="password" 
+          class="form-control" 
+          id="exampleInputPassword1" 
+          placeholder="Password">
+        </div>
+        <div class="form-check mb-3">
+          <input 
+          [(ngModel)]="user.remember"
+          type="checkbox" 
+          class="form-check-input" 
+          id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Remember me</label>
+        </div>
+        <button 
+        (click)="loginUser()"
+        class="login-btn btn btn-light">Login</button>
+    </div>
+
+  <img 
+  class="card-img"
+  src="../../../../assets/roses.jpg" alt="roses">
+
+</div>
+

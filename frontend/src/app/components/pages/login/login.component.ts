@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/services/api/user.service';
 
 @Component({
   selector: 'app-login',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
+  user:any = {}
+  constructor(private userService: UserService, private notification: ToastrService) { }
 
   ngOnInit(): void {
   }
 
+  loginUser(){
+    this.userService.login(this.user).subscribe(
+      (success:any)=>{
+        this.notification.success('You have successfully logged in.')
+        localStorage.setItem('token', success.token)
+        localStorage.setItem('user', JSON.stringify(success.user))
+      },
+      err =>{
+        this.notification.error(err.error.msg)
+      }
+    )
+  }
 }

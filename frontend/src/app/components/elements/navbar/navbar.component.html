@@ -1,11 +1,24 @@
-<nav class="navbar navbar-light bg-light p-0">
+<nav class="navbar navbar-light bg-light p-0 shadow-sm">
   <div class="container-fluid">
-    <div
-      [class.open]="navOpen"
-      class="burger-menu"
+      <div 
+      class="burger"
       (click)="navOpen = !navOpen"
       (click)="navToggle()"
-    ></div>
+      >
+          <div
+          [class.open]="navOpen"
+            class="burger-menu"
+          ></div>
+      </div>
+
+    <button
+    class="login-btn btn btn-light"
+    (click)="navigate('login')"
+    >
+      Login &nbsp; 
+      <i class="bi bi-box-arrow-in-left"></i>
+    </button>
+
     <a class="navbar-brand p-0" routerLink="/">
       <img
         src="../../../../assets/logosv.jpeg"

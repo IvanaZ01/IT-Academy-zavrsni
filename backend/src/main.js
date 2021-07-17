@@ -16,21 +16,24 @@ app.use(cors());
 
 //user actions
 const createUser = require('./controllers/user/createUser');
+const loginUser = require('./controllers/user/loginUser');
+
 
 //group actions
 const createGroup = require('./controllers/group/createGroup')
 
 //teacher actions
-const createTeacher = require('./controllers/teacher/createTeacher')
+const createTeacher = require('./controllers/teacher/createTeacher');
 
 //user routes 
-app.post('/create-user', createUser)
+app.post('/user-create', createUser)
+app.post('/user-login', loginUser)
 
 //group routes
-app.post('/create-group', createGroup)
+app.post('/group-create', createGroup)
 
 // teacher actions
-app.post('/create-teacher', createTeacher)
+app.post('/teacher-create', createTeacher)
 
 
 const PORT = process.env.PORT 
