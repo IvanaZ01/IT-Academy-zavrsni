@@ -17,23 +17,39 @@ app.use(cors());
 //user actions
 const createUser = require('./controllers/user/createUser');
 const loginUser = require('./controllers/user/loginUser');
+const getAllUsers = require('./controllers/user/getAllUsers');
+const updateUser = require('./controllers/user/updateUser');
+const deleteUser = require('./controllers/user/deleteUser');
 
 
 //group actions
 const createGroup = require('./controllers/group/createGroup')
+const updateGroup = require('./controllers/group/updateGroup');
+const getAllGroups = require('./controllers/group/getAllGroups');
 
 //teacher actions
 const createTeacher = require('./controllers/teacher/createTeacher');
+const getAllTeachers = require('./controllers/teacher/getAllTeachers');
+const updateTeacher = require('./controllers/teacher/updateTeacher');
+const deleteTeacher = require('./controllers/teacher/deleteTeacher');
 
 //user routes 
 app.post('/user-create', createUser)
 app.post('/user-login', loginUser)
+app.get('/user-get-all', getAllUsers)
+app.post('/user-update/:id', updateUser)
+app.delete('/user-delete/:id', deleteUser)
 
 //group routes
 app.post('/group-create', createGroup)
+app.post('/group-update/:id', updateGroup)
+app.get('/group-get-all', getAllGroups)
 
 // teacher actions
 app.post('/teacher-create', createTeacher)
+app.post('/teacher-update/:id', updateTeacher)
+app.get('/teacher-get-all', getAllTeachers)
+app.delete('/teacher-delete/:id', deleteTeacher)
 
 
 const PORT = process.env.PORT 

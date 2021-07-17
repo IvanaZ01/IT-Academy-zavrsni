@@ -3,13 +3,13 @@ const bcrypt = require('bcrypt')
 
 const createUser = async (req, res) => {
 
-    const { firstName, lastName, username, email, role, password, group_id } = req.body
+    const { firstName, lastName, username, role, password, groupId } = req.body
 
     const saltRounds = 10;
 	const passwordHash = await bcrypt.hash(password, saltRounds);
-    const sql = `INSERT INTO user (first_name, last_name, username, email, role, passwordHash, group_id) VALUES(?, ?, ?, ?, ?, ?, ?)`
+    const sql = `INSERT INTO user (first_name, last_name, username, role, passwordHash, group_id) VALUES(?, ?, ?, ?, ?, ?)`
 
-    db.query(sql, [firstName, lastName, username, email, role, passwordHash, group_id], (err, result)=>{
+    db.query(sql, [firstName, lastName, username, role, passwordHash, groupId], (err, result)=>{
         if(err){
             res.status(500).json(err)
             throw err
