@@ -14,6 +14,7 @@ import { GroupsComponent } from './components/pages/admin/groups/groups.componen
 import { TeachersComponent } from './components/pages/admin/teachers/teachers.component';
 import { TestsComponent } from './components/pages/admin/tests/tests.component';
 import { TestResultsComponent } from './components/pages/test-results/test-results.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TestResultsComponent } from './components/pages/test-results/test-resul
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ToastrModule
+    ToastrModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

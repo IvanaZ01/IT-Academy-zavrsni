@@ -1,30 +1,80 @@
+<nav class="navbar navbar-light bg-light p-0">
+  <div class="container-fluid">
+    <div
+      [class.open]="navOpen"
+      class="burger-menu"
+      (click)="navOpen = !navOpen"
+      (click)="navToggle()"
+    ></div>
+    <a class="navbar-brand p-0" routerLink="/">
+      <img
+        src="../../../../assets/logosv.jpeg"
+        alt="logo"
+        height="50"
+        class="d-inline-block"
+      />
+    </a>
+  </div>
+</nav>
 
-
-<nav class="navbar navbar-dark bg-light">
-    <ul>
-        <li>
-            <a routerLink="/" routerLinkActive="router-link-active" >News</a>
-        </li>
-        <li>
-            <a routerLink="/dashboard" routerLinkActive="router-link-active" >Dashboard</a>
-        </li>
-        <li>
-            <a routerLink="/contact" routerLinkActive="router-link-active" >Contact</a>
-        </li>
-        <li>
-            <a routerLink="/admin/user" routerLinkActive="router-link-active" >Users</a>
-        </li>
-        <li>
-            <a routerLink="/admin/teacher" routerLinkActive="router-link-active" >Teachers</a>
-        </li>
-        <li>
-            <a routerLink="/admin/group" routerLinkActive="router-link-active" >Groups</a>
-        </li>
-        <li>
-            <a routerLink="/admin/test" routerLinkActive="router-link-active" >Tests</a>
-        </li>
-    </ul>
-
-  </nav>
-
-
+<nav 
+[class.closed]="!navOpen"
+class="nav flex-column">
+  <a
+    class="nav-link"
+    aria-current="page"
+    routerLink="/home"
+    routerLinkActive="active"
+  >
+  <i class="bi bi-newspaper"></i> 
+     News
+  </a>
+  <a
+    class="nav-link"
+    routerLink="/dashboard"
+    routerLinkActive="active"
+  >
+  <i class="bi bi-speedometer2"></i> 
+    Dashboard
+  </a>
+  <a
+    class="nav-link"
+    routerLink="/contact"
+    routerLinkActive="active"
+  >
+  <i class="bi bi-telephone"></i> 
+    Contact
+  </a>
+  <a
+    class="nav-link"
+    routerLink="/admin/user"
+    routerLinkActive="active"
+  >
+  <i class="bi bi-people"></i>
+     Users
+  </a>
+  <a
+    class="nav-link"
+    routerLink="/admin/teacher"
+    routerLinkActive="active"
+  >
+  <i class="bi bi-book"></i> 
+    Teachers
+  </a>
+  <a
+    class="nav-link"
+    routerLink="/admin/group"
+    routerLinkActive="active"
+  >
+  <i class="bi bi-person-lines-fill"></i>
+    Groups
+  </a>
+  <a
+    class="nav-link"
+    routerLink="/admin/test"
+    routerLinkActive="active"
+  >
+  <i class="bi bi-card-checklist"></i>
+    Tests
+  </a>
+</nav>

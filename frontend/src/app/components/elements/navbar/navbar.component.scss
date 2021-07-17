@@ -1,33 +1,66 @@
-
-
-.nav {
-    background-color: $dark;
+.burger-menu{
     position: relative;
-    height: 100vh;
-    width: 200px;
+    width: 30px;
+    height: 6px;
+    background-color: #333;
     transition: all 200ms ease;
-    
-    ul{
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        li {
-            a{
-                display: block;
-                padding: .5em;
-                width: 100%;
-                text-decoration: none;
-                color: $white;
+    cursor: pointer;
 
-                &:hover{
-                    background-color: $medium;
-                }
-            }
+
+    &::after{
+        content: '';
+        position: absolute;
+        top: 10px;
+        width: 30px;
+        height: 6px;
+        background-color: #333;
+    }
+
+    &::before{
+        content:'';
+        position: absolute;
+        top: -10px;
+        width: 30px;
+        height: 6px;
+        background-color: #333;
+    }
+
+    &.open{
+        left: -3px;
+        transform: rotate(180deg);
+        background: transparent;
+    
+        &::before{
+            transform: rotate(45deg) ;
+            transform-origin: 3%;
+        }
+        &::after{
+            transform: rotate(-45deg);
+            transform-origin: 3%;
         }
     }
 }
 
-// .nav-closed{
-//     left: -200px;
-// }
+.nav{
+    background-color:  #4D2254;
+    width: 200px;
+    height: 100%;
+    position: absolute;
+    transition: all 200ms ease;
+    left: 0;
+
+    a{
+        color: #d1b3d6;
+        &:hover, &.active{
+            color: #fff;
+            background-color: #401d46;
+        }
+    }
+
+    &.closed{
+        transition: all 200ms ease;
+        left: -200px;
+    }
+}
+
+

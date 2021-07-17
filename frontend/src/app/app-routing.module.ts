@@ -13,7 +13,7 @@ import { TestResultsComponent } from './components/pages/test-results/test-resul
 
 const routes: Routes = [
   {
-    path: '', component: NewsComponent
+    path: 'home', component: NewsComponent
   },
   {
     path: 'dashboard', component: DashboardComponent
