@@ -9,6 +9,8 @@ import { DashboardComponent } from './components/pages/dashboard/dashboard.compo
 import { LoginComponent } from './components/pages/login/login.component';
 import { NewsComponent } from './components/pages/news/news.component';
 import { TestResultsComponent } from './components/pages/test-results/test-results.component';
+import { AuthGuardAdmin } from './services/auth-guard-admin.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -16,7 +18,7 @@ const routes: Routes = [
     path: 'home', component: NewsComponent
   },
   {
-    path: 'dashboard', component: DashboardComponent
+    path: 'dashboard', component: DashboardComponent,  canActivate: [ AuthGuardService ]
   },
   {
     path:'login', component:LoginComponent
@@ -25,19 +27,19 @@ const routes: Routes = [
     path:'contact', component: ContactComponent
   },
   {
-    path:'test-results', component: TestResultsComponent
+    path:'test-results', component: TestResultsComponent,  canActivate: [ AuthGuardService ]
   },
   {
-    path:'admin/user', component: UsersComponent
+    path:'admin/user', component: UsersComponent, canActivate: [ AuthGuardAdmin ]
   },
   {
-    path:'admin/teacher',component:TeachersComponent
+    path:'admin/teacher',component:TeachersComponent, canActivate: [ AuthGuardAdmin ]
   },
   {
-    path:'admin/group',component:GroupsComponent
+    path:'admin/group',component:GroupsComponent, canActivate: [ AuthGuardAdmin ]
   },
   {
-    path:'admin/test',component:TestsComponent
+    path:'admin/test',component:TestsComponent, canActivate: [ AuthGuardAdmin ]
   },
 ];
 

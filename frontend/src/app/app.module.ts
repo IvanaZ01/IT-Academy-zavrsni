@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/pages/login/login.component';
@@ -18,6 +18,10 @@ import { TeachersComponent } from './components/pages/admin/teachers/teachers.co
 import { TestsComponent } from './components/pages/admin/tests/tests.component';
 import { TestResultsComponent } from './components/pages/test-results/test-results.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardComponent } from './components/elements/card/card.component';
+import { ApiService } from './services/api/api.service';
+import { AuthInterceptor } from './services/auth-interceptor.service';
+
 
 
 
@@ -33,7 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GroupsComponent,
     TeachersComponent,
     TestsComponent,
-    TestResultsComponent
+    TestResultsComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ToastrService,
+    { 
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

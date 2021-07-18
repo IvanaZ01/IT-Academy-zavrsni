@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 
 @Component({
@@ -10,9 +12,22 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   navOpen = true
   @Output() open = new EventEmitter();
-  constructor(private router: Router) { }
+  user:any = null;
 
+  constructor(
+    private router: Router, 
+    private userStoreService: UserStoreService, 
+    private notifications: ToastrService) {
+  }
+  
   ngOnInit(): void {
+    this.userStoreService.user.subscribe(user => {
+      if (user != null) {
+        this.user = user;
+      } else {
+        this.user = null;
+      }
+    });
   }
 
   navToggle(){
@@ -22,4 +37,13 @@ export class NavbarComponent implements OnInit {
   navigate(link:string){
     this.router.navigateByUrl(link)
   }
+
+  logout(){
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+  
+      this.userStoreService.updateUser(null);
+      this.notifications.success('You have successfully logged out.');
+  }
+
 }

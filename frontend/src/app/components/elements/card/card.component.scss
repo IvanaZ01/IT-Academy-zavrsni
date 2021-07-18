@@ -1,0 +1,15 @@
+.card{
+    border-top: 3px solid #CF30CF;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+
+    .card-title{
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .creator{
+        color: #80298d;
+        font-weight: 700;
+    }
+}

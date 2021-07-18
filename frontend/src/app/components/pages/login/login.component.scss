@@ -21,10 +21,22 @@
 }
 
 .login-btn{
-    border: 2px solid #80298d;
-    color: #333;
-    width: 100px;
+    background-color: #810E94;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 0.3em 2em;
+    display: block;
+    margin: 0 auto;
     &:hover{
-        background-color: lighten(#CF30CF, 40%);
+        background-color: #CF30CF;
     }
+}
+
+.icon{
+    color: white;
+    font-size: 1.3rem;
+}
+
+.purple{
+    background-color: #810E94;
 }

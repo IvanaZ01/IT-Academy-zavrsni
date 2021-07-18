@@ -12,12 +12,15 @@
       </div>
 
     <button
+    *ngIf="!user"
     class="login-btn btn btn-light"
     (click)="navigate('login')"
     >
       Login &nbsp; 
       <i class="bi bi-box-arrow-in-left"></i>
     </button>
+
+    <div *ngIf="user"></div>
 
     <a class="navbar-brand p-0" routerLink="/">
       <img
@@ -43,6 +46,7 @@ class="nav flex-column">
      News
   </a>
   <a
+    *ngIf="user"
     class="nav-link"
     routerLink="/dashboard"
     routerLinkActive="active"
@@ -62,11 +66,13 @@ class="nav flex-column">
     class="nav-link"
     routerLink="/admin/user"
     routerLinkActive="active"
+    *ngIf="user && user.role == 'ADMIN'"
   >
   <i class="bi bi-people"></i>
      Users
   </a>
   <a
+    *ngIf="user && user.role == 'ADMIN'"
     class="nav-link"
     routerLink="/admin/teacher"
     routerLinkActive="active"
@@ -78,6 +84,7 @@ class="nav flex-column">
     class="nav-link"
     routerLink="/admin/group"
     routerLinkActive="active"
+    *ngIf="user && user.role == 'ADMIN'"
   >
   <i class="bi bi-person-lines-fill"></i>
     Groups
@@ -86,8 +93,18 @@ class="nav flex-column">
     class="nav-link"
     routerLink="/admin/test"
     routerLinkActive="active"
+    *ngIf="user && user.role == 'ADMIN'"
   >
   <i class="bi bi-card-checklist"></i>
     Tests
+  </a>
+  <a
+  *ngIf="user"
+    (click)="logout()"
+    class="nav-link"
+    routerLink="/home"
+  >
+  <i class="bi bi-box-arrow-in-left"></i>
+    Logout
   </a>
 </nav>

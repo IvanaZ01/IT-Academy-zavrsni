@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/api/user.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,12 @@ import { UserService } from 'src/app/services/api/user.service';
 })
 export class LoginComponent implements OnInit {
   user:any = {}
-  constructor(private userService: UserService, private notification: ToastrService) { }
+  constructor(
+    private userService: UserService,
+    private notification: ToastrService,
+    private userStoreService: UserStoreService,
+    private router: Router
+     ) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +27,8 @@ export class LoginComponent implements OnInit {
         this.notification.success('You have successfully logged in.')
         localStorage.setItem('token', success.token)
         localStorage.setItem('user', JSON.stringify(success.user))
+        this.userStoreService.updateUser(success.user);
+        this.router.navigateByUrl('/home')
       },
       err =>{
         this.notification.error(err.error.msg)
