@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthInterceptor } from './services/auth-interceptor.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/pages/login/login.component';
@@ -17,13 +19,7 @@ import { GroupsComponent } from './components/pages/admin/groups/groups.componen
 import { TeachersComponent } from './components/pages/admin/teachers/teachers.component';
 import { TestsComponent } from './components/pages/tests/tests.component';
 import { TestResultsComponent } from './components/pages/test-results/test-results.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardComponent } from './components/elements/card/card.component';
-import { ApiService } from './services/api/api.service';
-import { AuthInterceptor } from './services/auth-interceptor.service';
-
-
-
 
 @NgModule({
   declarations: [
@@ -38,7 +34,7 @@ import { AuthInterceptor } from './services/auth-interceptor.service';
     TeachersComponent,
     TestsComponent,
     TestResultsComponent,
-    CardComponent
+    CardComponent,
   ],
   imports: [
     BrowserModule,

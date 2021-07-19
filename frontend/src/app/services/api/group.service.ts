@@ -8,6 +8,6 @@ import { ApiService } from './api.service';
 export class GroupService extends ApiService{
 
   constructor(http: HttpClient) { 
-    super('http://localhost:3000/teacher', http)
+    super('http://localhost:3000/group', http)
   }
 }

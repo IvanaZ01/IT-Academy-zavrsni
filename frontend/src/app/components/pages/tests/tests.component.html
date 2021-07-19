@@ -1,5 +1,34 @@
+    <div [class.out]="!editActive" class="editor mx-auto mb-4 shadow">
+        <div class="form">
+            <h2 class="mb-4">Edit test</h2> <span (click)="closeEditor()" class="close-editor">X</span>
+                <label [class.hidden]="newTest.groupId"  class="label">Select Group ID</label>
+                <select [(ngModel)]="newTest.groupId" class="form-control mb-1">
+                    <option *ngFor="let group of selectGroups" [value]="group.group_id">{{group.group_id}}</option>
+                  </select>
+
+                  <label [class.hidden]="newTest.status == '' || newTest.status"  class="label">Select status</label>
+                <select [(ngModel)]="newTest.status" class="form-control mb-4">
+                    <option value="">Unfinished</option>
+                    <option value="Finished">Finished</option>
+                  </select>
+
+            <div class="form-group">
+              <input [(ngModel)]="newTest.name" type="text" class="form-control mb-4" placeholder="Test name">
+            </div>
+
+
+            <div class="form-group">
+              <input [(ngModel)]="newTest.date" type="text" class="form-control mb-4" >
+            </div>
+ 
+            <button 
+            (click)="updateTest()"
+            class="btn btn-primary save-btn">Save</button>
+          </div>
+    </div>
+
 <div class="wrapper">
-    <table class="table mx-auto table-bordered table-hover">
+    <table class="table mx-auto table-bordered table-hover shadow">
         <thead>
           <tr>
               
@@ -15,14 +44,16 @@
 
             <td *ngIf="user.role == 'ADMIN'">{{test.group_id}}</td>
             <td>{{test.name}}</td>
-            <td>{{test.scheduled | date}}</td>
+            <td>{{test.scheduled | date: 'mediumDate'}}</td>
             <td>{{test.status}}</td>
 
             <td class="text-center" *ngIf="user.role == 'ADMIN'">
                 <i 
                 (click)="deleteTest(test.test_id)"
                 class="bi bi-trash admin-icons"></i>
-                <i class="bi bi-filter-circle admin-icons"></i>
+                <i
+                (click)="openEditor(test)"
+                class="bi bi-filter-circle admin-icons"></i>
             </td>
 
             <td class="text-center" *ngIf="user.role == 'USER'">

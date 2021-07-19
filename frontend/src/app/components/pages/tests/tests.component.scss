@@ -19,3 +19,44 @@ tr:hover{
         visibility: visible;
     }
 }
+
+
+.editor{
+  background-color: #fff;
+  width: 30%;
+  padding: 2em;
+  position: relative;
+  min-height: 430px ;
+
+  .save-btn{
+    position: absolute;
+    right: 30px;
+    background-color: #B333A1;
+    padding: 0.3em 2em;
+  }
+
+  .close-editor{
+    position: absolute;
+    right: 25px;
+    top: 33px;
+    font-weight: 900;
+    cursor: pointer;
+    display: block;
+    padding: .5em;
+  }
+}
+
+.out{
+  display: none;
+}
+
+
+.label{
+  position: relative;
+  top: 30px;
+  left: 10px;
+}
+
+.hidden{
+  opacity: 0;
+}
