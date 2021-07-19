@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GroupsComponent } from './components/pages/admin/groups/groups.component';
 import { TeachersComponent } from './components/pages/admin/teachers/teachers.component';
-import { TestsComponent } from './components/pages/admin/tests/tests.component';
+import { TestsComponent } from './components/pages/tests/tests.component';
 import { UsersComponent } from './components/pages/admin/users/users.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
@@ -30,6 +30,9 @@ const routes: Routes = [
     path:'test-results', component: TestResultsComponent,  canActivate: [ AuthGuardService ]
   },
   {
+    path:'test', component: TestsComponent,  canActivate: [ AuthGuardService ]
+  },
+  {
     path:'admin/user', component: UsersComponent, canActivate: [ AuthGuardAdmin ]
   },
   {
@@ -37,10 +40,7 @@ const routes: Routes = [
   },
   {
     path:'admin/group',component:GroupsComponent, canActivate: [ AuthGuardAdmin ]
-  },
-  {
-    path:'admin/test',component:TestsComponent, canActivate: [ AuthGuardAdmin ]
-  },
+  }
 ];
 
 @NgModule({

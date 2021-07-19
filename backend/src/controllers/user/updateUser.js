@@ -2,6 +2,9 @@ const db = require('../../../db-config');
 const bcrypt = require('bcrypt')
 
 const updateUser = async(req, res) => {
+	if(req.user.role !== "ADMIN"){
+        return res.status(401).json({msg: "You need to be administrator"})
+    }
 	const userId = +req.params.id;
 	const { firstName, lastName, username, role, password, groupId } = req.body;
 

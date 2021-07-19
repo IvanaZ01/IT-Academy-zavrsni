@@ -15,7 +15,7 @@ import { ContactComponent } from './components/pages/contact/contact.component';
 import { UsersComponent } from './components/pages/admin/users/users.component';
 import { GroupsComponent } from './components/pages/admin/groups/groups.component';
 import { TeachersComponent } from './components/pages/admin/teachers/teachers.component';
-import { TestsComponent } from './components/pages/admin/tests/tests.component';
+import { TestsComponent } from './components/pages/tests/tests.component';
 import { TestResultsComponent } from './components/pages/test-results/test-results.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardComponent } from './components/elements/card/card.component';

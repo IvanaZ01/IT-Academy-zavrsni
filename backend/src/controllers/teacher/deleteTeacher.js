@@ -1,6 +1,9 @@
 const db = require('../../../db-config');
 
 const deleteTeacher = (req, res) => {
+    if(req.user.role !== "ADMIN"){
+        return res.status(401).json({msg: "You need to be administrator"})
+    }
     const teacherId = req.params.id
 	const sql = `DELETE FROM teacher WHERE teacher_id = ?;`;
 

@@ -1,0 +1,37 @@
+<div class="wrapper">
+    <table class="table mx-auto table-bordered table-hover">
+        <thead>
+          <tr>
+              
+            <th *ngIf="user.role == 'ADMIN'" scope="col">Group Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+            <th scope="col" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let test of tests">
+
+            <td *ngIf="user.role == 'ADMIN'">{{test.group_id}}</td>
+            <td>{{test.name}}</td>
+            <td>{{test.scheduled | date}}</td>
+            <td>{{test.status}}</td>
+
+            <td class="text-center" *ngIf="user.role == 'ADMIN'">
+                <i 
+                (click)="deleteTest(test.test_id)"
+                class="bi bi-trash admin-icons"></i>
+                <i class="bi bi-filter-circle admin-icons"></i>
+            </td>
+
+            <td class="text-center" *ngIf="user.role == 'USER'">
+                <button 
+                *ngIf="test.status == 'Finished'"
+                type="button" 
+                class="btn btn-info">Results</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

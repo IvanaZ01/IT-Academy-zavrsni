@@ -1,0 +1,30 @@
+.wrapper{
+    margin: 4em auto;
+    width: 80%;
+    max-width: 1000px;
+}
+
+.fit-card{
+    height: 220px;
+    width: 90%;
+    max-width: 300px;
+}
+
+.card{
+    border-top: 3px solid #CF30CF;
+}
+
+.bi{
+    font-size: 2rem;
+}
+
+.btn{
+    background-color: #810E94;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 0.2em 2em;
+    margin: 0 auto;
+    &:hover{
+        background-color: #CF30CF;
+    }
+}

@@ -1,6 +1,9 @@
 const db = require('../../../db-config');
 
 const createGroup = (req, res) => {
+    if(req.user.role !== "ADMIN"){
+        return res.status(401).json({msg: "You need to be administrator"})
+    }
 	const { level, teacherId } = req.body;
 	const sql = `INSERT INTO cambridge.group (level, teacher_id) VALUES(?, ?)`;
 

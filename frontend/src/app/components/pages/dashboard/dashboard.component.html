@@ -1,1 +1,63 @@
-<p>dashboard works!</p>
+<div class="wrapper">
+    <div class="row justify-content-around">
+        <div class="col-sm-12 col-xl-4 fit-card">
+            <div class="card text-center shadow" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title mb-2">News</h5>
+                  <p class="card-text"><i class="bi bi-newspaper"></i></p>
+                  <a routerLink="/home"  class="btn btn-primary">View</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-12 col-xl-4 fit-card">
+            <div class="card text-center shadow" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title mb-2">All tests</h5>
+                  <p class="card-text"><i class="bi bi-card-checklist"></i></p>
+                  <a routerLink="/test" class="btn btn-primary">View</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-12 col-xl-4 fit-card">
+            <div class="card text-center shadow" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title mb-2">Test results</h5>
+                  <p class="card-text"><i class="bi bi-bar-chart-line"></i></p>
+                  <a routerLink="/test-results" class="btn btn-primary">View</a>
+                </div>
+              </div>
+            
+        </div>
+        <div *ngIf="user && user.role == 'ADMIN'" class="col-sm-12 col-xl-4 fit-card">
+            <div class="card text-center shadow" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title mb-2">Groups</h5>
+                  <p class="card-text"><i class="bi bi-grid-3x3-gap"></i></p>
+                  <a routerLink="/admin/group"  class="btn btn-primary">View</a>
+                </div>
+              </div>
+        </div>
+        <div 
+        *ngIf="user && user.role == 'ADMIN'"
+        class="col-sm-12 col-xl-4 fit-card">
+            <div class="card text-center shadow" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title mb-2">Users</h5>
+                  <p class="card-text"><i class="bi bi-people"></i></p>
+                  <a routerLink="/admin/user"  class="btn btn-primary">View</a>
+                </div>
+              </div>
+        </div>
+        <div 
+        *ngIf="user && user.role == 'ADMIN'"
+        class="col-sm-12 col-xl-4 fit-card">
+            <div class="card text-center shadow" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title mb-2">Teachers</h5>
+                  <p class="card-text"><i class="bi bi-book"></i></p>
+                  <a routerLink="/admin/teacher"  class="btn btn-primary">View</a>
+                </div>
+              </div>
+        </div>
+      </div>
+</div>
