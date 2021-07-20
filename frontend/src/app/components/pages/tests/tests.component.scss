@@ -1,3 +1,11 @@
+.wrapper{
+  transition: all 100ms ease-out;
+}
+
+.wrapper-move{
+  transform: translateY(430px);
+}
+
 .table {
   background-color: #fff;
   width: 90%;
@@ -25,14 +33,21 @@ tr:hover{
   background-color: #fff;
   width: 30%;
   padding: 2em;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   min-height: 430px ;
+  z-index: 20;
 
   .save-btn{
     position: absolute;
     right: 30px;
     background-color: #B333A1;
     padding: 0.3em 2em;
+
+    &:hover{
+      background-color: lighten(#B333A1,10%);
+    }
   }
 
   .close-editor{
@@ -43,6 +58,16 @@ tr:hover{
     cursor: pointer;
     display: block;
     padding: .5em;
+  }
+}
+.create-test-btn{
+  position: absolute;
+  top: 2em;
+  right: 0;
+  margin: 0 5%;
+  background-color: #B333A1;
+  &:hover{
+    background-color: lighten(#B333A1,10%);
   }
 }
 

@@ -1,1 +1,51 @@
-<p>teachers works!</p>
+<div [class.out]="!editActive.open" class="editor mx-auto mb-4 shadow">
+    <div class="form">
+        <h2 class="mb-4">{{editActive.mode}}</h2> <span (click)="closeEditor()" class="close-editor">X</span>
+
+        <div class="form-group">
+          <input [(ngModel)]="newTeacher.firstName" type="text" class="form-control mb-4" placeholder="First name">
+        </div>
+
+        <div class="form-group">
+          <input [(ngModel)]="newTeacher.lastName" placeholder="Last name" type="text" class="form-control mb-4" >
+        </div>
+
+        <button 
+        (click)="editActive.mode == 'Add teacher'? addTeacher() : updateTeacher()"
+        class="btn btn-primary save-btn">Save</button>
+      </div>
+</div> 
+
+<button 
+(click)="openEditor('Add teacher', {})"
+class="btn btn-primary create-test-btn">Add new teacher</button>
+
+<div [class.wrapper-move]="editActive.open" class="wrapper mt-5">
+<table class="table mx-auto table-bordered table-hover shadow">
+    <thead>
+      <tr>
+        <th *ngIf="user.role == 'ADMIN'" scope="col">Teacher ID</th>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+        <th scope="col" class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let teacher of teachers">
+
+        <td *ngIf="user.role == 'ADMIN'">{{teacher.teacher_id}}</td>
+        <td>{{teacher.first_name | titlecase}}</td>
+        <td>{{teacher.last_name | titlecase}}</td>
+
+        <td class="text-center" *ngIf="user.role == 'ADMIN'">
+            <i 
+            (click)="deleteTeacher(teacher.teacher_id)"
+            class="bi bi-trash admin-icons"></i>
+            <i
+            (click)="openEditor('Edit', teacher)"
+            class="bi bi-filter-circle admin-icons"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

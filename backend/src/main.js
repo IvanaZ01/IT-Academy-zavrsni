@@ -44,6 +44,7 @@ const createArticle = require('./controllers/article/createArticle');
 const createTest = require('./controllers/test/createTest');
 const getGroupTests = require('./controllers/test/getGroupTests');
 const deleteTest = require('./controllers/test/deleteTest');
+const updateTest = require('./controllers/test/updateTest');
 
 //user routes 
 app.post('/user-create',authenticateToken, createUser)
@@ -71,6 +72,7 @@ app.post('/article-create',authenticateToken, createArticle)
 app.post('/test-create',authenticateToken, createTest)
 app.get('/test-get-all/:id',authenticateToken, getGroupTests)
 app.delete('/test-delete/:id',authenticateToken, deleteTest)
+app.put('/test-update/:id',authenticateToken, updateTest)
 
 
 const PORT = process.env.PORT 

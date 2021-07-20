@@ -1,0 +1,88 @@
+.wrapper{
+    transition: all 100ms ease-out;
+  }
+  
+  .wrapper-move{
+    transform: translateY(300px);
+  }
+  
+  .table {
+    background-color: #fff;
+    width: 90%;
+  }
+  
+  .admin-icons {
+    visibility: hidden;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0 .3em;
+  
+    &:hover{
+      color: red;
+    }
+  }
+  
+  tr:hover{
+      .admin-icons{
+          visibility: visible;
+      }
+  }
+  
+  
+  .editor{
+    background-color: #fff;
+    width: 30%;
+    padding: 2em;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    min-height: 300px ;
+    z-index: 20;
+  
+    .save-btn{
+      position: absolute;
+      right: 30px;
+      background-color: #B333A1;
+      padding: 0.3em 2em;
+  
+      &:hover{
+        background-color: lighten(#B333A1,10%);
+      }
+    }
+  
+    .close-editor{
+      position: absolute;
+      right: 25px;
+      top: 33px;
+      font-weight: 900;
+      cursor: pointer;
+      display: block;
+      padding: .5em;
+    }
+  }
+  .create-test-btn{
+    position: absolute;
+    top: 2em;
+    right: 0;
+    margin: 0 5%;
+    background-color: #B333A1;
+    &:hover{
+      background-color: lighten(#B333A1,10%);
+    }
+  }
+  
+  .out{
+    display: none;
+  }
+  
+  
+  .label{
+    position: relative;
+    top: 30px;
+    left: 10px;
+  }
+  
+  .hidden{
+    opacity: 0;
+  }
+  

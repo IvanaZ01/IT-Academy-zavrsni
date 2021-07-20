@@ -15,10 +15,11 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 export class TestsComponent implements OnInit {
   tests:any;
   user:any;
+
   //edit and create 
   selectGroups:any = [{group_id: '', status:""}]
-  newTest: any = {}
-  editActive = false
+  newTest: any = {date: ''}
+  editActive = {open: false, mode: ''}
 
 
   constructor(
@@ -76,20 +77,35 @@ export class TestsComponent implements OnInit {
     )
   }
 
-  openEditor(info?:any){
-    const date = new Date(Date.parse(info.scheduled)).toLocaleDateString().split('/')
-    const dateFormat = [date[2], date[1], date[0]].join('/')
-    
-    this.editActive = true
+  createTest(){
+    this.testService.create(this.newTest).subscribe(
+      success=>{
+        this.getAllTests()
+        this.notifications.success('Test successfully created')
+        this.closeEditor()
+      }
+    )
+  }
+
+  openEditor(mode:string, info?:any){
+    this.newTest.date = info.date 
+    this.editActive.open = true
+    this.editActive.mode = mode
     this.newTest.groupId = info.group_id || ''
     this.newTest.status = info.status || ''
     this.newTest.name = info.name || ''
-    this.newTest.date = dateFormat || ''
     this.newTest.id = info.test_id 
+
+    if(info.date !== ''){
+      const date = new Date(Date.parse(info.scheduled)).toLocaleDateString().split('/')
+      const dateFormat = [date[2], date[1], date[0]].join('/')
+      this.newTest.date = dateFormat 
+    }
   }
 
   closeEditor(){
-    this.editActive = false
+    this.editActive.open = false
   }
+
 
 }

@@ -1,6 +1,6 @@
-    <div [class.out]="!editActive" class="editor mx-auto mb-4 shadow">
+    <div [class.out]="!editActive.open" class="editor mx-auto mb-4 shadow">
         <div class="form">
-            <h2 class="mb-4">Edit test</h2> <span (click)="closeEditor()" class="close-editor">X</span>
+            <h2 class="mb-4">{{editActive.mode}}</h2> <span (click)="closeEditor()" class="close-editor">X</span>
                 <label [class.hidden]="newTest.groupId"  class="label">Select Group ID</label>
                 <select [(ngModel)]="newTest.groupId" class="form-control mb-1">
                     <option *ngFor="let group of selectGroups" [value]="group.group_id">{{group.group_id}}</option>
@@ -18,16 +18,20 @@
 
 
             <div class="form-group">
-              <input [(ngModel)]="newTest.date" type="text" class="form-control mb-4" >
+              <input [(ngModel)]="newTest.date" placeholder="Test date(yyyy/mm/dd)" type="text" class="form-control mb-4" >
             </div>
  
             <button 
-            (click)="updateTest()"
+            (click)="editActive.mode == 'Schedule test'? createTest() : updateTest()"
             class="btn btn-primary save-btn">Save</button>
           </div>
-    </div>
+    </div> 
+    
+    <button 
+    (click)="openEditor('Schedule test', {date:''})"
+    class="btn btn-primary create-test-btn">Schedule a new test</button>
 
-<div class="wrapper">
+    <div [class.wrapper-move]="editActive.open" class="wrapper mt-5">
     <table class="table mx-auto table-bordered table-hover shadow">
         <thead>
           <tr>
@@ -52,7 +56,7 @@
                 (click)="deleteTest(test.test_id)"
                 class="bi bi-trash admin-icons"></i>
                 <i
-                (click)="openEditor(test)"
+                (click)="openEditor('edit', test)"
                 class="bi bi-filter-circle admin-icons"></i>
             </td>
 
