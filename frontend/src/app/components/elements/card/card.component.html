@@ -1,12 +1,33 @@
 <div class="card mb-5 shadow">
+  <div *ngIf="user && user.role == 'ADMIN'" class="icons">
+    <i (click)="sendEdit()" class="bi bi-pencil-square"></i>
+    <i (click)="sendDelete()" class="bi bi-trash-fill"></i>
+  </div>
+
   <div class="card-body">
     <h5 class="card-title mb-4">{{ data.title }}</h5>
-    <p class="card-text mb-4">{{ data.body }}</p>
-    <p class="card-text">
-      <small class="text-muted"
-        > Published: &nbsp; {{data.createdAt | date:'medium' }} by <span class="creator">{{ data.first_name | titlecase }} {{ data.last_name | titlecase }}</span></small
-      >
-    </p>
+
+    <div class="flex">
+
+      <div class="text-div">
+        <p class="card-text mb-4">{{ data.body }}</p>
+          <small class="text-muted mb-3">
+            Published: &nbsp;
+            {{ data.createdAt | date: "medium" }}
+            by
+            <span class="creator"
+              >{{ data.first_name | titlecase }}
+              {{ data.last_name | titlecase }}</span
+            >
+          </small>
+      </div>
+      
+      <img
+      *ngIf="data.image_url"
+      [src]="data.image_url"
+      class="post-img"
+      alt="post photo"
+      />
+    </div>
   </div>
 </div>
-

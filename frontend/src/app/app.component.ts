@@ -7,9 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Cambridge';
-  navOpen = true
+  navOpen = false
 
   setNavState($event:any){
     this.navOpen = $event
   }
+
+
 }

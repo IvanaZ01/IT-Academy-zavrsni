@@ -4,10 +4,10 @@ const createArticle = (req, res) => {
     if(req.user.role !== "ADMIN"){
         return res.status(401).json({msg: "You need to be administrator"})
     }
-    const { title, body, userId } = req.body
-    const sql = `INSERT INTO article (title, body, user_id) VALUES(?, ?, ?)`
+    const { title, body, userId, imageUrl } = req.body
+    const sql = `INSERT INTO article (title, body, user_id, image_url) VALUES(?, ?, ?, ?)`
 
-    db.query(sql, [title, body, userId], (err, result)=>{
+    db.query(sql, [title, body, userId, imageUrl], (err, result)=>{
         if(err){
             res.status(500).json(err)
             throw err

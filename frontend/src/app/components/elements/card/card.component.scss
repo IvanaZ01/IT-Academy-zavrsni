@@ -1,15 +1,71 @@
-.card{
-    border-top: 3px solid #CF30CF;
-    width: 100%;
-    max-width: 900px;
-    margin: auto;
+.card {
+  padding: 1em 1.5em;
+  border-top: 3px solid #cf30cf;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  position: relative;
 
-    .card-title{
-        font-size: 1.5rem;
-        font-weight: bold;
+  .icons {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 40px;
+    opacity: 0;
+
+    i:hover {
+      color: red;
     }
-    .creator{
-        color: #80298d;
-        font-weight: 700;
+  }
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .creator {
+    color: #80298d;
+    font-weight: 700;
+  }
+
+  &:hover {
+    .icons {
+      opacity: 1;
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: scroll;
+
+  .text-div {
+    flex: 1 2 auto;
+    margin-right: 1.5em;
+    position: relative;
+    .text-muted {
+        display: block;
+        position: relative;
+        bottom: 0;
+    }
+  }
+
+  .post-img {
+    flex: 2 1 auto;
+    width: 100%;
+    min-width: 250px;
+    max-width: 600px;
+    height: initial;
+    margin: 0 auto;
+
+  }
+}
+
+@media screen and (min-width: 1100px) {
+    .flex{
+        flex-direction: row;
     }
 }

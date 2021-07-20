@@ -1,4 +1,37 @@
-.cards{
-    width: 90%;
-    
+.cards {
+  width: 90%;
+}
+.card {
+  border-top: 3px solid #cf30cf;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 330px;
+  margin: auto;
+  position: relative;
+
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .post-btns {
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    display: flex;
+    justify-content: flex-end;
+    width: 180px;
+
+    .post-btn {
+      background-color: #b333a1;
+      padding: 0.3em 1.6em;
+      &:hover {
+        background-color: lighten(#b333a1, 10%);
+      }
+    }
+    .cancle-btn {
+      margin-left: 1em;
+      padding: 0.3em 1em;
+    }
+  }
 }

@@ -22,7 +22,7 @@
 
     <div *ngIf="user"></div>
 
-    <a class="navbar-brand p-0" routerLink="/">
+    <a class="navbar-brand p-0" routerLink="/home">
       <img
         src="../../../../assets/logosv.jpeg"
         alt="logo"
@@ -91,7 +91,7 @@ class="nav flex-column">
   </a>
   <a
     class="nav-link"
-    routerLink="/admin/test"
+    routerLink="/test"
     routerLinkActive="active"
     *ngIf="user && user.role == 'ADMIN'"
   >

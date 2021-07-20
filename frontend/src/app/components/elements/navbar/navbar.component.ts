@@ -10,7 +10,7 @@ import { UserStoreService } from 'src/app/services/user-store.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  navOpen = true
+  navOpen = false
   @Output() open = new EventEmitter();
   user:any = null;
 

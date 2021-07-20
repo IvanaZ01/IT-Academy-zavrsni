@@ -80,8 +80,12 @@ export class TeachersComponent implements OnInit {
     this.editActive.open = true
     this.editActive.mode = mode
 
-    this.newTeacher.firstName = info.first_name
-    this.newTeacher.lastName = info.last_name
+    console.log(info)
+    this.newTeacher.firstName = info.first_name || ''
+    this.newTeacher.lastName = info.last_name || ''
+    this.newTeacher.id = info.teacher_id || ''
+
+    console.log(this.newTeacher)
   }
 
   closeEditor(){

@@ -1,8 +1,9 @@
-    <app-navbar (open)="setNavState($event)"></app-navbar>
-    <div 
-    [class.nav-open]="navOpen"
-    class="wrapper">
-        <router-outlet></router-outlet>
-    </div>
+<div 
+[class.nav-open]="navOpen"
+class="wrapper"
+>
+<router-outlet></router-outlet>
+</div>
+<app-navbar (open)="setNavState($event)"></app-navbar>
 
 

@@ -39,6 +39,8 @@ const deleteTeacher = require('./controllers/teacher/deleteTeacher');
 //article actions
 const getAllArticles = require('./controllers/article/getAllArticles');
 const createArticle = require('./controllers/article/createArticle');
+const deleteArticle = require('./controllers/article/deleteArticle');
+const updateArticle = require('./controllers/article/articleUpdate');
 
 //test actions
 const createTest = require('./controllers/test/createTest');
@@ -50,23 +52,25 @@ const updateTest = require('./controllers/test/updateTest');
 app.post('/user-create',authenticateToken, createUser)
 app.post('/user-login', loginUser)
 app.get('/user-get-all',authenticateToken, getAllUsers)
-app.post('/user-update/:id',authenticateToken, updateUser)
+app.put('/user-update/:id',authenticateToken, updateUser)
 app.delete('/user-delete/:id',authenticateToken, deleteUser)
 
 //group routes
 app.post('/group-create',authenticateToken, createGroup)
-app.post('/group-update/:id',authenticateToken, updateGroup)
+app.put('/group-update/:id',authenticateToken, updateGroup)
 app.get('/group-get-all',authenticateToken, getAllGroups)
 
 // teacher actions
 app.post('/teacher-create',authenticateToken, createTeacher)
-app.post('/teacher-update/:id',authenticateToken, updateTeacher)
+app.put('/teacher-update/:id',authenticateToken, updateTeacher)
 app.get('/teacher-get-all',authenticateToken, getAllTeachers)
 app.delete('/teacher-delete/:id',authenticateToken, deleteTeacher)
 
 //article routes 
 app.get('/article-get-all', getAllArticles)
 app.post('/article-create',authenticateToken, createArticle)
+app.delete('/article-delete/:id',authenticateToken, deleteArticle)
+app.put('/article-update/:id',authenticateToken, updateArticle)
 
 //test routes
 app.post('/test-create',authenticateToken, createTest)

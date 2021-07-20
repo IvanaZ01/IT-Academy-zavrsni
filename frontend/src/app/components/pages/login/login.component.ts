@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', success.token)
         localStorage.setItem('user', JSON.stringify(success.user))
         this.userStoreService.updateUser(success.user);
-        this.router.navigateByUrl('/home')
+        this.router.navigateByUrl('/dashboard')
       },
       err =>{
         this.notification.error(err.error.msg)
