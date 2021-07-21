@@ -29,6 +29,7 @@ const deleteUser = require('./controllers/user/deleteUser');
 const createGroup = require('./controllers/group/createGroup')
 const updateGroup = require('./controllers/group/updateGroup');
 const getAllGroups = require('./controllers/group/getAllGroups');
+const deleteGroup = require('./controllers/group/deleteGroup');
 
 //teacher actions
 const createTeacher = require('./controllers/teacher/createTeacher');
@@ -59,6 +60,7 @@ app.delete('/user-delete/:id',authenticateToken, deleteUser)
 app.post('/group-create',authenticateToken, createGroup)
 app.put('/group-update/:id',authenticateToken, updateGroup)
 app.get('/group-get-all',authenticateToken, getAllGroups)
+app.delete('/group-delete/:id',authenticateToken, deleteGroup)
 
 // teacher actions
 app.post('/teacher-create',authenticateToken, createTeacher)

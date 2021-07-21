@@ -11,7 +11,7 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 })
 export class NavbarComponent implements OnInit {
   navOpen = false
-  @Output() open = new EventEmitter();
+  @Output() toggle = new EventEmitter();
   user:any = null;
 
   constructor(
@@ -31,7 +31,8 @@ export class NavbarComponent implements OnInit {
   }
 
   navToggle(){
-    this.open.emit(this.navOpen)
+    this.navOpen = !this.navOpen
+    this.toggle.emit(this.navOpen)
   }
 
   navigate(link:string){

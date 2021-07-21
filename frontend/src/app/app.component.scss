@@ -10,4 +10,21 @@
     overflow: scroll;
 }
 
+.background{
+    transition: all 200ms ease;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.404);
+}
 
+.open{
+    opacity: 1;
+}
+
+.none{
+    display: none;
+}

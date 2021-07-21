@@ -28,6 +28,7 @@
     </div> 
     
     <button 
+    *ngIf="user.role === 'ADMIN'"
     (click)="openEditor('Schedule test', {date:''})"
     class="btn btn-primary create-test-btn">Schedule a new test</button>
 
@@ -36,7 +37,7 @@
         <thead>
           <tr>
               
-            <th *ngIf="user.role == 'ADMIN'" scope="col">Group Id</th>
+            <th *ngIf="user.role === 'ADMIN'" scope="col">Group Id</th>
             <th scope="col">Name</th>
             <th scope="col">Date</th>
             <th scope="col">Status</th>
@@ -46,12 +47,12 @@
         <tbody>
           <tr *ngFor="let test of tests">
 
-            <td *ngIf="user.role == 'ADMIN'">{{test.group_id}}</td>
+            <td *ngIf="user.role === 'ADMIN'">{{test.group_id}}</td>
             <td>{{test.name}}</td>
             <td>{{test.scheduled | date: 'mediumDate'}}</td>
             <td>{{test.status}}</td>
 
-            <td class="text-center" *ngIf="user.role == 'ADMIN'">
+            <td class="text-center" *ngIf="user.role === 'ADMIN'">
                 <i 
                 (click)="deleteTest(test.test_id)"
                 class="bi bi-trash admin-icons"></i>
@@ -60,9 +61,9 @@
                 class="bi bi-filter-circle admin-icons"></i>
             </td>
 
-            <td class="text-center" *ngIf="user.role == 'USER'">
+            <td class="text-center" *ngIf="user.role === 'USER'">
                 <button 
-                *ngIf="test.status == 'Finished'"
+                *ngIf="test.status === 'Finished'"
                 type="button" 
                 class="btn btn-info">Results</button>
             </td>

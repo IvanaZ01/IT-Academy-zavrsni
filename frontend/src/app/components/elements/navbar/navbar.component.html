@@ -2,7 +2,6 @@
   <div class="container-fluid">
       <div 
       class="burger"
-      (click)="navOpen = !navOpen"
       (click)="navToggle()"
       >
           <div
@@ -37,6 +36,7 @@
 [class.closed]="!navOpen"
 class="nav flex-column">
   <a
+    (click)="navToggle()"
     class="nav-link"
     aria-current="page"
     routerLink="/home"
@@ -46,6 +46,7 @@ class="nav flex-column">
      News
   </a>
   <a
+    (click)="navToggle()"
     *ngIf="user"
     class="nav-link"
     routerLink="/dashboard"
@@ -55,6 +56,7 @@ class="nav flex-column">
     Dashboard
   </a>
   <a
+  (click)="navToggle()"
     class="nav-link"
     routerLink="/contact"
     routerLinkActive="active"
@@ -63,6 +65,7 @@ class="nav flex-column">
     Contact
   </a>
   <a
+  (click)="navToggle()"
     class="nav-link"
     routerLink="/admin/user"
     routerLinkActive="active"
@@ -72,6 +75,7 @@ class="nav flex-column">
      Users
   </a>
   <a
+  (click)="navToggle()"
     *ngIf="user && user.role == 'ADMIN'"
     class="nav-link"
     routerLink="/admin/teacher"
@@ -81,6 +85,7 @@ class="nav flex-column">
     Teachers
   </a>
   <a
+  (click)="navToggle()"
     class="nav-link"
     routerLink="/admin/group"
     routerLinkActive="active"
@@ -90,6 +95,7 @@ class="nav flex-column">
     Groups
   </a>
   <a
+  (click)="navToggle()"
     class="nav-link"
     routerLink="/test"
     routerLinkActive="active"
@@ -99,6 +105,7 @@ class="nav flex-column">
     Tests
   </a>
   <a
+  (click)="navToggle()"
   *ngIf="user"
     (click)="logout()"
     class="nav-link"
