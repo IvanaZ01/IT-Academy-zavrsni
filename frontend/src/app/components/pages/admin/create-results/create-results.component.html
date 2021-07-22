@@ -1,0 +1,29 @@
+<div #cards class="cards mx-auto">
+    <div 
+    class="card mb-5 shadow">
+      <div class="card-body">
+          <h5 class="card-title mb-4">{{''}}</h5>
+        <div class="form-group mb-3">
+          <input [(ngModel)]="newResults.title" type="text" class="form-control" placeholder="Post title" />
+        </div>
+        
+        <div class="form-group mb-3">
+          <textarea [(ngModel)]="newResults.body" class="form-control" id="exampleFormControlTextarea1" placeholder="Post body" rows="5"></textarea>
+        </div>
+  
+        <div class="form-group mb-5">
+          <input [(ngModel)]="newResults.imageUrl" type="text" class="form-control" placeholder="Image url" />
+        </div>
+        
+        <!-- <div class="post-btns">
+            <button 
+            (click)="editMode == 'Edit post'? updatePost() : createPost()"
+            class="btn btn-primary post-btn">{{editMode == 'Edit post'? 'Save' : 'Post'}}</button>
+            <button 
+            *ngIf="editMode == 'Edit post'"
+            (click)="closeEdit()"
+            class="btn btn-danger cancle-btn">Cancel</button>
+        </div> -->
+  
+      </div>
+    </div>

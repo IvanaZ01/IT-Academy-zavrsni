@@ -1,0 +1,71 @@
+.wrapper {
+  transition: all 100ms ease-out;
+}
+
+.wrapper-move {
+  transform: translateY(430px);
+}
+
+.admin-icons {
+  visibility: hidden;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0 0.3em;
+
+  &:hover {
+    color: red;
+  }
+}
+
+.create-test-btn {
+  position: absolute;
+  top: 2em;
+  right: 0;
+  margin: 0 5%;
+  background-color: #b333a1;
+  &:hover {
+    background-color: lighten(#b333a1, 10%);
+  }
+}
+
+.out {
+  display: none;
+}
+
+.label {
+  position: relative;
+  top: 30px;
+  left: 10px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.cards {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 4em;
+
+  .card {
+
+    padding: 0em 2em;
+
+    &:hover {
+      .admin-icons {
+        visibility: visible;
+      }
+    }
+
+    .ids {
+      color: darkgray;
+    }
+    .admin {
+      position: absolute;
+      right: 1em;
+      top: 1.3em;
+    }
+  }
+}

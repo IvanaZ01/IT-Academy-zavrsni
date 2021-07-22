@@ -1,0 +1,13 @@
+<div class="row drop">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Create results for a test</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button
+          (click)="navigate(option.id)"
+          *ngFor="let option of options" class="dropdown-item">{{option.name}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

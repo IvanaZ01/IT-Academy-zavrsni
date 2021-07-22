@@ -8,7 +8,11 @@ export class ApiService {
   constructor(@Inject(String) private url: string, public _http: HttpClient) {}
 
   getAll() {
-    return this._http.get(this.url + '-get-all');
+    return this._http.get<any[]>(this.url + '-get-all');
+  }
+
+  getById(id:number) {
+    return this._http.get<any[]>(this.url + '-get-by-id/' + id);
   }
 
   create(resource: any) {

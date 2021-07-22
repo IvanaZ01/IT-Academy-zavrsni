@@ -20,6 +20,8 @@ import { TeachersComponent } from './components/pages/admin/teachers/teachers.co
 import { TestsComponent } from './components/pages/tests/tests.component';
 import { TestResultsComponent } from './components/pages/test-results/test-results.component';
 import { CardComponent } from './components/elements/card/card.component';
+import { CreateResultsComponent } from './components/pages/admin/create-results/create-results.component';
+import { NgbdDropdownBasic } from './components/elements/dropdown/dropdown-basic.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { CardComponent } from './components/elements/card/card.component';
     TestsComponent,
     TestResultsComponent,
     CardComponent,
+    CreateResultsComponent,
+    NgbdDropdownBasic
   ],
   imports: [
     BrowserModule,

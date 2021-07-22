@@ -14,5 +14,13 @@ export class UserService extends ApiService{
   login(user:User){
     return this._http.post('http://localhost:3000/user-login', user)
   }
+
+  filterUserByTest(testId:number){
+    return this._http.get('http://localhost:3000/user-filter-by-test/' + testId)
+  }
+
+  filterUserByGroup(testId:number){
+    return this._http.get('http://localhost:3000/user-filter-by-group/' + testId)
+  }
 }
 

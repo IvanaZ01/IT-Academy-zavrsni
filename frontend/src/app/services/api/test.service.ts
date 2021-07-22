@@ -12,6 +12,6 @@ export class TestService extends ApiService{
   }
 
   getTests(id:any){
-     return this._http.get('http://localhost:3000/test-get-all/' + id)
+     return this._http.get<any[]>('http://localhost:3000/test-get-all/' + id)
   }
 }

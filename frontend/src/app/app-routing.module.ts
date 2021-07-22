@@ -11,6 +11,7 @@ import { NewsComponent } from './components/pages/news/news.component';
 import { TestResultsComponent } from './components/pages/test-results/test-results.component';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { CreateResultsComponent } from './components/pages/admin/create-results/create-results.component';
 
 
 const routes: Routes = [
@@ -40,7 +41,10 @@ const routes: Routes = [
   },
   {
     path:'admin/group',component:GroupsComponent, canActivate: [ AuthGuardAdmin ]
-  }
+  },
+  {
+    path:'admin/create-results',component: CreateResultsComponent, canActivate: [ AuthGuardAdmin ]
+  },
 ];
 
 @NgModule({

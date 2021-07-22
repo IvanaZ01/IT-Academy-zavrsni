@@ -36,7 +36,8 @@
     <table class="table mx-auto table-bordered table-hover shadow">
         <thead>
           <tr>
-              
+      
+            <th *ngIf="user.role === 'ADMIN'" scope="col">Test ID</th>
             <th *ngIf="user.role === 'ADMIN'" scope="col">Group Id</th>
             <th scope="col">Name</th>
             <th scope="col">Date</th>
@@ -47,6 +48,7 @@
         <tbody>
           <tr *ngFor="let test of tests">
 
+            <td *ngIf="user.role === 'ADMIN'">{{test.test_id}}</td>
             <td *ngIf="user.role === 'ADMIN'">{{test.group_id}}</td>
             <td>{{test.name}}</td>
             <td>{{test.scheduled | date: 'mediumDate'}}</td>
