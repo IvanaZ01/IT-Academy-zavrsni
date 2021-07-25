@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Teacher } from 'src/app/models/Teacher.model';
+import { User } from 'src/app/models/User.model';
 import { TeacherService } from 'src/app/services/api/teacher.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 
@@ -10,11 +12,11 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 })
 export class TeachersComponent implements OnInit {
 
-  teachers:any;
-  user:any;
+  teachers:Teacher[] = [];
+  user:User|null = {};
 
   //edit and create 
-  newTeacher: any = {};
+  newTeacher: Teacher = {};
   editActive = {open: false, mode: ''}
 
 
@@ -80,12 +82,10 @@ export class TeachersComponent implements OnInit {
     this.editActive.open = true
     this.editActive.mode = mode
 
-    console.log(info)
     this.newTeacher.firstName = info.first_name || ''
     this.newTeacher.lastName = info.last_name || ''
     this.newTeacher.id = info.teacher_id || ''
 
-    console.log(this.newTeacher)
   }
 
   closeEditor(){

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TestResult } from 'src/app/models/TestResults.model';
+import { User } from 'src/app/models/User.model';
 import { TestResultService } from 'src/app/services/api/test-results.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 
@@ -9,8 +11,8 @@ import { UserStoreService } from 'src/app/services/user-store.service';
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
-  results:any
-  user:any;
+  results:TestResult[] = []
+  user:User|null = {};
 
   constructor(
     private testResultService: TestResultService,
@@ -21,9 +23,7 @@ export class ResultComponent implements OnInit {
   ngOnInit(): void {
     this.testResultService.getResultsByTest(this.route.snapshot.queryParams.testId).subscribe(
       success => {
-        this.results = success
-        console.log(success);
-        
+        this.results = success       
       }
     )
 

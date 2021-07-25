@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Test } from 'src/app/models/Test.model';
+import { User } from 'src/app/models/User.model';
 import { TestResultService } from 'src/app/services/api/test-results.service';
 import { TestService } from 'src/app/services/api/test.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
@@ -11,16 +13,16 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 })
 export class TestResultsComponent implements OnInit {
 
-  testResults:any;
-  user:any;
-  allTests:any;
-  testsForDrop:any;
+  testResults:any[] = [];
+  user:User|null = {};
+  allTests:Test[] = [];
+  testsForDrop:Test[] = [];
 
   constructor(
     private testResultService: TestResultService,
     private userStoreService: UserStoreService,
     private testService: TestService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -45,7 +47,7 @@ export class TestResultsComponent implements OnInit {
   }
 
   getAllResults(){
-    this.testResultService.getAllResults(this.user.group_id).subscribe(
+    this.testResultService.getAllResults(this.user!.group_id).subscribe(
       success=>{
         this.testResults = success
       }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from 'src/app/models/User.model';
 import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { UserStoreService } from 'src/app/services/user-store.service';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  user:any;
+  user:User|null = null;
   @Input() data:any;
   @Output() edit = new EventEmitter();
   @Output() delete = new EventEmitter();

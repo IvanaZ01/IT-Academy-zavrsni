@@ -24,7 +24,7 @@ class="btn btn-primary create-test-btn">Add new teacher</button>
 <table class="table mx-auto table-bordered table-hover shadow">
     <thead>
       <tr>
-        <th *ngIf="user.role == 'ADMIN'" scope="col">Teacher ID</th>
+        <th *ngIf="user?.role == 'ADMIN'" scope="col">Teacher ID</th>
         <th scope="col">First name</th>
         <th scope="col">Last name</th>
         <th scope="col" class="text-center">Actions</th>
@@ -33,13 +33,13 @@ class="btn btn-primary create-test-btn">Add new teacher</button>
     <tbody>
       <tr *ngFor="let teacher of teachers">
 
-        <td *ngIf="user.role == 'ADMIN'">{{teacher.teacher_id}}</td>
+        <td *ngIf="user?.role == 'ADMIN'">{{teacher.teacher_id}}</td>
         <td>{{teacher.first_name | titlecase}}</td>
         <td>{{teacher.last_name | titlecase}}</td>
 
-        <td class="text-center" *ngIf="user.role == 'ADMIN'">
+        <td class="text-center" *ngIf="user?.role == 'ADMIN'">
             <i 
-            (click)="deleteTeacher(teacher.teacher_id)"
+            (click)="deleteTeacher(teacher.teacher_id!)"
             class="bi bi-trash admin-icons"></i>
             <i
             (click)="openEditor('Edit', teacher)"

@@ -5,7 +5,7 @@
         <th scope="col">Student ID</th>
         <th scope="col">Student</th>
         <th scope="col">Score</th>
-        <th *ngIf="user.role === 'ADMIN'" scope="col">Actions</th>
+        <th *ngIf="user?.role === 'ADMIN'" scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -23,7 +23,7 @@
               class="input"
             />
             <button
-              (click)="addScore(student.user_id, score, btn)"
+              (click)="addScore(student.user_id!, score, btn)"
               class="btn btn-success check-btn"
               id="button-addon2"
             >
@@ -31,13 +31,13 @@
             </button>
           </div>
 
-          {{ (edit.active && edit.studentId == student.user_id) ? "" : getScore(student.user_id) }}
+          {{ (edit.active && edit.studentId == student.user_id) ? "" : getScore(student.user_id!) }}
 
           <button
             #btn
             (click)="swapInputBtn(score, btn)"
             class="btn btn-primary add-btn"
-            [class.hidden]="getScore(student.user_id)"
+            [class.hidden]="getScore(student.user_id!)"
             [hidden]="edit.active"
           >
             Enter score 
@@ -45,18 +45,18 @@
         </td>
         <td>
           <div 
-          *ngIf="getScore(student.user_id)"
+          *ngIf="getScore(student.user_id!)"
           class="admin-icons">
             <i
               (click)="
-              singleScore = getScore(student.user_id);
+              singleScore = getScore(student.user_id!);
               edit.active = true;
-              edit.studentId = student.user_id; 
+              edit.studentId = student.user_id!; 
               swapInputBtn(score, btn)"
               class="bi bi-pencil-square"
             ></i>
             <i
-            (click)="deleteScore(student.user_id)"
+            (click)="deleteScore(student.user_id!)"
             class="bi bi-trash"></i>
           </div>
         </td>

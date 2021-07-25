@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Test } from 'src/app/models/Test.model';
+import { TestResult } from 'src/app/models/TestResults.model';
+import { User } from 'src/app/models/User.model';
 import { TestResultService } from 'src/app/services/api/test-results.service';
 import { TestService } from 'src/app/services/api/test.service';
 import { UserService } from 'src/app/services/api/user.service';
@@ -11,12 +14,12 @@ import { UserStoreService } from 'src/app/services/user-store.service';
   styleUrls: ['./create-results.component.scss'],
 })
 export class CreateResultsComponent implements OnInit {
-  test: any = {};
-  students: any;
-  newResults: any = {};
-  studentResults: any = [];
-  singleScore = 0;
-  user: any;
+  test: Test = {};
+  students: User[] = [];
+  newResults: TestResult = {};
+  studentResults: TestResult[] = [];
+  singleScore: number|string = 0;
+  user: User = {};
   edit = {studentId: 0, active: false}
 
   constructor(
@@ -32,8 +35,7 @@ export class CreateResultsComponent implements OnInit {
       .getById(+this.route.snapshot.queryParams.testId)
       .subscribe((success) => {
         this.userService
-          .filterUserByGroup(success.group_id)
-          .subscribe((success2) => {
+          .filterUserByGroup(success.group_id).subscribe((success2) => {
             this.students = success2;
           });
 
@@ -80,7 +82,7 @@ export class CreateResultsComponent implements OnInit {
   }
 
   deleteScore(id:number){
-    this.testResultService.deleteTestResults(this.test.id, id).subscribe(
+    this.testResultService.deleteTestResults(this.test.id!, id).subscribe(
       success=>{
         this.getResults();
       }
@@ -89,14 +91,14 @@ export class CreateResultsComponent implements OnInit {
 
   getResults() {
     this.testResultService
-      .getResultsByTest(this.test.id)
+      .getResultsByTest(this.test.id!)
       .subscribe((success) => {
         this.studentResults = success;
       });
   }
 
-  getScore(id: number) {
-    return this.studentResults.filter((score: any) => score.user_id === id)[0]?.score.toString()
+  getScore(id: number|string) {
+    return this.studentResults!.filter((score:any) => score.user_id === id)[0]?.score!.toString()
   }
 
   swapInputBtn(input: any, btn: any) {

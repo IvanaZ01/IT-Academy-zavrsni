@@ -9,7 +9,7 @@
         <div class="form-group">
             <label [class.hidden]="newGroup.teacherId"  class="label">Select teacher for the group</label>
             <select [(ngModel)]="newGroup.teacherId" class="form-control mb-1">
-                <option *ngFor="let teacher of selectTeachers" [value]="teacher.teacher_id">{{(teacher.first_name + ' ' + teacher.last_name) | titlecase }}</option>
+                <option *ngFor="let teacher of selectTeachers" [value]="teacher!.teacher_id">{{(teacher.first_name + ' ' + teacher.last_name) | titlecase }}</option>
             </select>
         </div>
         
@@ -42,7 +42,7 @@ class="btn btn-primary create-test-btn">Create new group</button>
 
         <td class="text-center">
             <i 
-            (click)="deleteGroup(group.group_id)"
+            (click)="deleteGroup(group.group_id!)"
             class="bi bi-trash admin-icons"></i>
             <i
             (click)="openEditor('Edit', group)"

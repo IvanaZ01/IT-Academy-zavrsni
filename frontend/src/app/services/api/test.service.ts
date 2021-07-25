@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Test } from 'src/app/models/Test.model';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -12,6 +13,6 @@ export class TestService extends ApiService{
   }
 
   getTests(id:any){
-     return this._http.get<any[]>('http://localhost:3000/test-get-all/' + id)
+     return this._http.get<Test[]>('http://localhost:3000/test-get-all/' + id)
   }
 }

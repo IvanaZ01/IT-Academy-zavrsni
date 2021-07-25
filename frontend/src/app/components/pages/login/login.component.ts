@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/models/User.model';
 import { UserService } from 'src/app/services/api/user.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 
@@ -10,7 +11,7 @@ import { UserStoreService } from 'src/app/services/user-store.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  user:any = {}
+  user:User= {}
   constructor(
     private userService: UserService,
     private notification: ToastrService,

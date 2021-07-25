@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/User.model';
 import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 })
 export class DashboardComponent implements OnInit {
 
-  user:any;
+  user:User|null = {};
 
   constructor(private userStoreService: UserStoreService) { }
 

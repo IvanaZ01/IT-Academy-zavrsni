@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { TestResult } from 'src/app/models/TestResults.model';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -19,11 +20,11 @@ export class TestResultService {
   }
 
   getAllResults(groupId?:number){
-     return this.http.get(this.url + "-get-all" + `?groupId=${groupId}`)
+     return this.http.get<TestResult[]>(this.url + "-get-all" + `?groupId=${groupId}`)
   }
 
   getResultsByTest(testId:number){
-     return this.http.get(this.url + "-get-all/" + `${testId}`)
+     return this.http.get<TestResult[]>(this.url + "-get-all/" + `${testId}`)
   }
 
   editTestResult(resource: any){

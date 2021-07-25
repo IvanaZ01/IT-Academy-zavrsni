@@ -7,7 +7,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let result of results" [class.student]="result.user_id === user.user_id">
+        <tr *ngFor="let result of results" [class.student]="result.user_id === user?.user_id">
           <td>{{ (result.first_name +" "+ result.last_name) | titlecase}}</td>
           <td>
               {{result.score}}

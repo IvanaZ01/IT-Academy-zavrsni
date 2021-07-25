@@ -18,6 +18,7 @@ const loginUser = async(req,res) => {
         if(!match){
             res.status(500).json({msg: "incorrect password"})
         }
+        delete user.passwordHash
         const token = generateAccessToken(user, remember)
     
         res.status(200).json({token, user})

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Group } from 'src/app/models/Groups.model';
 import { Test } from 'src/app/models/Test.model';
+import { User } from 'src/app/models/User.model';
 import { GroupService } from 'src/app/services/api/group.service';
 import { TestService } from 'src/app/services/api/test.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
@@ -14,12 +16,12 @@ import { UserStoreService } from 'src/app/services/user-store.service';
   styleUrls: ['./tests.component.scss']
 })
 export class TestsComponent implements OnInit {
-  tests:any;
-  user:any;
+  tests:Test[]=[];
+  user:User|null = null;
 
   //edit and create 
-  selectGroups:any = [{group_id: '', status:""}]
-  newTest: any = {date: ''}
+  selectGroups = [{group_id: ''}]
+  newTest: Test = {date: ''}
   editActive = {open: false, mode: ''}
 
 
@@ -50,7 +52,7 @@ export class TestsComponent implements OnInit {
   }
 
   getAllTests(){
-    this.testService.getTests(this.user.group_id).subscribe(
+    this.testService.getTests(this.user!.group_id).subscribe(
       success=>{
         this.tests = success
       }

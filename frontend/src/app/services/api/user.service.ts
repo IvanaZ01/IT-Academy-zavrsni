@@ -16,11 +16,11 @@ export class UserService extends ApiService{
   }
 
   filterUserByTest(testId:number){
-    return this._http.get('http://localhost:3000/user-filter-by-test/' + testId)
+    return this._http.get<User[]>('http://localhost:3000/user-filter-by-test/' + testId)
   }
 
   filterUserByGroup(groupId:number){
-    return this._http.get('http://localhost:3000/user-filter-by-group/' + groupId)
+    return this._http.get<User[]>('http://localhost:3000/user-filter-by-group/' + groupId)
   }
 }
 

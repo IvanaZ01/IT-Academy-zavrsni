@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Article } from 'src/app/models/Article.model';
+import { User } from 'src/app/models/User.model';
 import { ArticleService } from 'src/app/services/api/article.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 
@@ -9,9 +11,9 @@ import { UserStoreService } from 'src/app/services/user-store.service';
   styleUrls: ['./news.component.scss'],
 })
 export class NewsComponent implements OnInit {
-  articles: any = [];
-  newPost: any = {};
-  user: any;
+  articles: Article[] = [];
+  newPost: Article = {};
+  user: User|null = {};
   editMode: string = 'Create new post';
 
   constructor(
@@ -39,8 +41,7 @@ export class NewsComponent implements OnInit {
   }
 
   createPost() {
-    this.newPost.userId = this.user.user_id;
-    console.log(this.newPost)
+    this.newPost.userId = this.user!.user_id;
     this.articleService.create(this.newPost).subscribe((success) => {
       this.getAllArticles();
       this.notifications.success('Post published.');
@@ -48,12 +49,12 @@ export class NewsComponent implements OnInit {
     });
   }
   updatePost() {
-    console.log(this.newPost)
     this.newPost.id = this.newPost.article_id;
     this.articleService.update(this.newPost).subscribe((success) => {
       this.getAllArticles();
       this.notifications.success('Post published.');
       this.newPost = {};
+      this.editMode = 'Creat new post'
     });
   }
 

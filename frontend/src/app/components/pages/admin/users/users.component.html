@@ -74,7 +74,7 @@ class="btn btn-primary create-test-btn">Add new user</button>
 
         <td class="text-center">
             <i 
-            (click)="deleteUser(user.user_id)"
+            (click)="deleteUser(user.user_id!)"
             class="bi bi-trash admin-icons"></i>
             <i
             (click)="openEditor('Edit', user)"

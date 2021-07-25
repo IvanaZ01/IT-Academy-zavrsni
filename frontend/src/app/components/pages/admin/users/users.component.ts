@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Group } from 'src/app/models/Groups.model';
+import { User } from 'src/app/models/User.model';
 import { GroupService } from 'src/app/services/api/group.service';
 import { UserService } from 'src/app/services/api/user.service';
 
@@ -10,11 +12,11 @@ import { UserService } from 'src/app/services/api/user.service';
 })
 export class UsersComponent implements OnInit {
 
-  users:any;
-  selectGroups:any;
+  users:User[] = [];
+  selectGroups:Group[] = [];
 
   //edit and create 
-  newUser: any = {};
+  newUser: User = {};
   editActive = {open: false, mode: ''}
 
 

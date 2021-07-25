@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Group } from 'src/app/models/Groups.model';
+import { Teacher } from 'src/app/models/Teacher.model';
 import { GroupService } from 'src/app/services/api/group.service';
 import { TeacherService } from 'src/app/services/api/teacher.service';
 
@@ -10,11 +12,11 @@ import { TeacherService } from 'src/app/services/api/teacher.service';
 })
 export class GroupsComponent implements OnInit {
 
-  groups:any;
-  selectTeachers:any;
+  groups:Group[] = [];
+  selectTeachers:Teacher[] = [];
 
   //edit and create 
-  newGroup: any = {};
+  newGroup: Group = {};
   editActive = {open: false, mode: ''}
 
 
@@ -78,12 +80,10 @@ export class GroupsComponent implements OnInit {
     this.editActive.open = true
     this.editActive.mode = mode
 
-    console.log(info)
     this.newGroup.teacherId = info.teacher_id || ''
     this.newGroup.level = info.level || ''
     this.newGroup.id = info.group_id || ''
 
-    console.log(this.newGroup)
   }
 
   closeEditor(){

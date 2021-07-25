@@ -6,7 +6,7 @@
                     <option *ngFor="let group of selectGroups" [value]="group.group_id">{{group.group_id}}</option>
                   </select>
 
-                  <label [class.hidden]="newTest.status == '' || newTest.status"  class="label">Select status</label>
+                  <label [class.hidden]="!newTest.status?.length || newTest.status"  class="label">Select status</label>
                 <select [(ngModel)]="newTest.status" class="form-control mb-4">
                     <option value="">Unfinished</option>
                     <option value="Finished">Finished</option>
@@ -28,7 +28,7 @@
     </div> 
     
     <button 
-    *ngIf="user.role === 'ADMIN'"
+    *ngIf="user?.role === 'ADMIN'"
     (click)="openEditor('Schedule test', {date:''})"
     class="btn btn-primary create-test-btn">Schedule a new test</button>
 
@@ -37,8 +37,8 @@
         <thead>
           <tr>
       
-            <th *ngIf="user.role === 'ADMIN'" scope="col">Test ID</th>
-            <th *ngIf="user.role === 'ADMIN'" scope="col">Group Id</th>
+            <th *ngIf="user?.role === 'ADMIN'" scope="col">Test ID</th>
+            <th *ngIf="user?.role === 'ADMIN'" scope="col">Group Id</th>
             <th scope="col">Name</th>
             <th scope="col">Date</th>
             <th scope="col">Status</th>
@@ -48,24 +48,24 @@
         <tbody>
           <tr *ngFor="let test of tests">
 
-            <td *ngIf="user.role === 'ADMIN'">{{test.test_id}}</td>
-            <td *ngIf="user.role === 'ADMIN'">{{test.group_id}}</td>
+            <td *ngIf="user?.role === 'ADMIN'">{{test.test_id}}</td>
+            <td *ngIf="user?.role === 'ADMIN'">{{test.group_id}}</td>
             <td>{{test.name}}</td>
             <td>{{test.scheduled | date: 'mediumDate'}}</td>
             <td>{{test.status}}</td>
 
-            <td class="text-center" *ngIf="user.role === 'ADMIN'">
+            <td class="text-center" *ngIf="user?.role === 'ADMIN'">
                 <i 
-                (click)="deleteTest(test.test_id)"
+                (click)="deleteTest(test.test_id!)"
                 class="bi bi-trash admin-icons"></i>
                 <i
                 (click)="openEditor('edit', test)"
                 class="bi bi-filter-circle admin-icons"></i>
             </td>
 
-            <td class="text-center" *ngIf="user.role === 'USER'">
+            <td class="text-center" *ngIf="user?.role === 'USER'">
                 <button 
-                (click)="navigate(test.test_id)"
+                (click)="navigate(test.test_id!)"
                 *ngIf="test.status === 'Finished'"
                 type="button" 
                 class="btn btn-info">Results</button>
