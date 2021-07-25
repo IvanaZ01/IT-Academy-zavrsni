@@ -1,4 +1,19 @@
 
-.cards {
+.wrapper {
   width: 90%;
+  max-width: 1200px;
+  background-color: #fff;
+}
+
+.input-div{
+  display: flex;
+  max-width: 150px;
+
+  .input{
+    width: 100px;
+  }
+}
+
+.add-btn{
+  width: 150px;
 }

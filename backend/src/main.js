@@ -17,13 +17,18 @@ app.use(cors());
 //jwt authentication
 const authenticateToken = require('./middleware/auth.middleware');
 
+/****************
+    ALL ACTIONS
+****************/
+
 //user actions
 const createUser = require('./controllers/user/createUser');
 const loginUser = require('./controllers/user/loginUser');
 const getAllUsers = require('./controllers/user/getAllUsers');
 const updateUser = require('./controllers/user/updateUser');
 const deleteUser = require('./controllers/user/deleteUser');
-
+const filterUserByTest = require('./controllers/user/filterUsersByTest');
+const filterUserByGroup = require('./controllers/user/filterUserByGroup');
 
 //group actions
 const createGroup = require('./controllers/group/createGroup')
@@ -48,6 +53,18 @@ const createTest = require('./controllers/test/createTest');
 const getGroupTests = require('./controllers/test/getGroupTests');
 const deleteTest = require('./controllers/test/deleteTest');
 const updateTest = require('./controllers/test/updateTest');
+const getAllTests = require('./controllers/test/getAllTests');
+const getTestById = require('./controllers/test/getTestById');
+
+//test result actions
+const createTestResult = require('./controllers/test-results/createTestResult');
+const deleteTestResult = require('./controllers/test-results/deleteTestResult');
+const getAllResults = require('./controllers/test-results/getAllResults');
+const getResultsByTest = require('./controllers/test-results/getResultsByTest');
+
+/****************
+    ALL ROUTES
+****************/
 
 //user routes 
 app.post('/user-create',authenticateToken, createUser)
@@ -55,6 +72,8 @@ app.post('/user-login', loginUser)
 app.get('/user-get-all',authenticateToken, getAllUsers)
 app.put('/user-update/:id',authenticateToken, updateUser)
 app.delete('/user-delete/:id',authenticateToken, deleteUser)
+app.get('/user-filter-by-test/:testId',authenticateToken, filterUserByTest)
+app.get('/user-filter-by-group/:groupId',authenticateToken, filterUserByGroup)
 
 //group routes
 app.post('/group-create',authenticateToken, createGroup)
@@ -79,6 +98,14 @@ app.post('/test-create',authenticateToken, createTest)
 app.get('/test-get-all/:id',authenticateToken, getGroupTests)
 app.delete('/test-delete/:id',authenticateToken, deleteTest)
 app.put('/test-update/:id',authenticateToken, updateTest)
+app.get('/test-get-by-id/:testId',authenticateToken, getTestById)
+app.get('/test-get-all',authenticateToken, getAllTests)
+
+//test result routes 
+app.post('/test-result-create',authenticateToken, createTestResult)
+app.delete('/test-result-delete/:testId/:userId',authenticateToken, deleteTestResult)
+app.get('/test-result-get-all/:testId',authenticateToken, getResultsByTest)
+app.get('/test-result-get-all',authenticateToken, getAllResults)
 
 
 const PORT = process.env.PORT 

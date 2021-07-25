@@ -1,4 +1,6 @@
-<ngbd-dropdown-basic [options]="testsForDrop"></ngbd-dropdown-basic>
+<ngbd-dropdown-basic 
+*ngIf="user.role === 'ADMIN'"
+[options]="testsForDrop"></ngbd-dropdown-basic>
 
 <div class="wrapper mt-5">
     <div class="cards row justify-content-evenly">

@@ -1,29 +1,49 @@
-<div #cards class="cards mx-auto">
-    <div 
-    class="card mb-5 shadow">
-      <div class="card-body">
-          <h5 class="card-title mb-4">{{''}}</h5>
-        <div class="form-group mb-3">
-          <input [(ngModel)]="newResults.title" type="text" class="form-control" placeholder="Post title" />
-        </div>
-        
-        <div class="form-group mb-3">
-          <textarea [(ngModel)]="newResults.body" class="form-control" id="exampleFormControlTextarea1" placeholder="Post body" rows="5"></textarea>
-        </div>
-  
-        <div class="form-group mb-5">
-          <input [(ngModel)]="newResults.imageUrl" type="text" class="form-control" placeholder="Image url" />
-        </div>
-        
-        <!-- <div class="post-btns">
-            <button 
-            (click)="editMode == 'Edit post'? updatePost() : createPost()"
-            class="btn btn-primary post-btn">{{editMode == 'Edit post'? 'Save' : 'Post'}}</button>
-            <button 
-            *ngIf="editMode == 'Edit post'"
-            (click)="closeEdit()"
-            class="btn btn-danger cancle-btn">Cancel</button>
-        </div> -->
-  
-      </div>
-    </div>
+<div class="wrapper mx-auto shadow">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Student ID</th>
+        <th scope="col">Student</th>
+        <th scope="col">Score</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.user_id }}</td>
+        <td>{{ student.first_name }} {{ student.last_name }}</td>
+        <td>
+          <div hidden class="input-div">
+            <input
+              [(ngModel)]="singleScore"
+              #score
+              type="text"
+              min="0"
+              max="100"
+              class="input"
+            />
+            <button
+              (click)="addScore(student.user_id, score, btn)"  
+              class="btn btn-success check-btn"
+              id="button-addon2"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+          </div>
+
+          {{ getScore(student.user_id).score || "" }}
+
+          <button
+            #btn
+            (click)="swapInputBtn(score, btn)"
+            class="btn btn-primary add-btn"
+            [hidden]="getScore(student.user_id).score"
+          >
+            Enter score
+          </button>
+        </td>
+        <td>@mdo</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

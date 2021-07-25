@@ -9,11 +9,14 @@ import { Router } from '@angular/router';
 export class NgbdDropdownBasic {
   @Input() options: any;
 
-  constructor(private router:Router){
+  constructor(
+    private router:Router
+    ){
 
   }
 
   navigate(id:number){
+    const sure = confirm("End test with id " + id + " ?")
       this.router.navigateByUrl('admin/create-results?testId=' + id)
   }
 }

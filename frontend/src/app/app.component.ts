@@ -22,9 +22,7 @@ export class AppComponent {
     }
   }
   destroyIn200() {
-    console.log('pozvano')
     setTimeout(() => {
-      console.log('radi')
       this.destroy = true;
     }, 200);
   }

@@ -106,6 +106,16 @@ class="nav flex-column">
   </a>
   <a
   (click)="navToggle()"
+    class="nav-link"
+    routerLink="/test-results"
+    routerLinkActive="active"
+    *ngIf="user && user.role == 'ADMIN'"
+  >
+  <i class="bi bi-card-checklist"></i>
+    Tests Results
+  </a>
+  <a
+  (click)="navToggle()"
   *ngIf="user"
     (click)="logout()"
     class="nav-link"

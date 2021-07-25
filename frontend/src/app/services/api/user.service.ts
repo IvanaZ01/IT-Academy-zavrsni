@@ -19,8 +19,8 @@ export class UserService extends ApiService{
     return this._http.get('http://localhost:3000/user-filter-by-test/' + testId)
   }
 
-  filterUserByGroup(testId:number){
-    return this._http.get('http://localhost:3000/user-filter-by-group/' + testId)
+  filterUserByGroup(groupId:number){
+    return this._http.get('http://localhost:3000/user-filter-by-group/' + groupId)
   }
 }
 

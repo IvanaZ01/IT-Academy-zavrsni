@@ -21,4 +21,8 @@ export class TestResultService {
   getAllResults(groupId?:number){
      return this.http.get(this.url + "-get-all" + `?groupId=${groupId}`)
   }
+
+  getResultsByTest(testId:number){
+     return this.http.get(this.url + "-get-all/" + `${testId}`)
+  }
 }

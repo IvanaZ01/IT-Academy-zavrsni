@@ -54,7 +54,7 @@ export class TestResultsComponent implements OnInit {
   }
 
   openEditor(id?:number){
-    this.router.navigateByUrl('admin/create-results?id=' + id)
+    this.router.navigateByUrl('admin/create-results?testId=' + id)
   }
 
 

@@ -12,7 +12,7 @@ export class ApiService {
   }
 
   getById(id:number) {
-    return this._http.get<any[]>(this.url + '-get-by-id/' + id);
+    return this._http.get<any>(this.url + '-get-by-id/' + id);
   }
 
   create(resource: any) {
