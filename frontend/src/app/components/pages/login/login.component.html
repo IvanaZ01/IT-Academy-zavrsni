@@ -16,7 +16,9 @@
             <div class="input-group-prepend">
               <span class="input-group-text purple" id="basic-addon1"><i class="bi bi-key icon"></i></span>
             </div>
-            <input [(ngModel)]="user.password" type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+            <input 
+            (keyup.enter)="loginUser()"
+            [(ngModel)]="user.password" type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
           </div>
 
         <div class="form-check mb-4">

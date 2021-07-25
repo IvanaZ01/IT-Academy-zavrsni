@@ -61,6 +61,7 @@ const createTestResult = require('./controllers/test-results/createTestResult');
 const deleteTestResult = require('./controllers/test-results/deleteTestResult');
 const getAllResults = require('./controllers/test-results/getAllResults');
 const getResultsByTest = require('./controllers/test-results/getResultsByTest');
+const updateTestResult = require('./controllers/test-results/updateTestResult');
 
 /****************
     ALL ROUTES
@@ -103,6 +104,7 @@ app.get('/test-get-all',authenticateToken, getAllTests)
 
 //test result routes 
 app.post('/test-result-create',authenticateToken, createTestResult)
+app.put('/test-result-update/:testId/:userId',authenticateToken, updateTestResult)
 app.delete('/test-result-delete/:testId/:userId',authenticateToken, deleteTestResult)
 app.get('/test-result-get-all/:testId',authenticateToken, getResultsByTest)
 app.get('/test-result-get-all',authenticateToken, getAllResults)

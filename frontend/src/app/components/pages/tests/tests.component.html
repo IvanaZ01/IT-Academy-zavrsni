@@ -65,6 +65,7 @@
 
             <td class="text-center" *ngIf="user.role === 'USER'">
                 <button 
+                (click)="navigate(test.test_id)"
                 *ngIf="test.status === 'Finished'"
                 type="button" 
                 class="btn btn-info">Results</button>

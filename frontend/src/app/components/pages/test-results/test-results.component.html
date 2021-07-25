@@ -6,16 +6,12 @@
     <div class="cards row justify-content-evenly">
         <div *ngFor="let testResult of testResults" class="card col-sm-12 col-xl-4 shadow mb-3">
           <h3 class="card-title mt-3 mb-3">{{ testResult.name }}</h3>
-          <span class="admin" *ngIf="user.role === 'ADMIN'">
-            <i
-              (click)="openEditor(testResult.test_id)"
-              class="bi bi-filter-circle admin-icons"
-            ></i>
-          </span>
           <p class="ids" *ngIf="user.role === 'ADMIN'">Test ID: {{ testResult.test_id }}</p>
           <p class="ids" *ngIf="user.role === 'ADMIN'">Group ID: {{ testResult.group_id }}</p>
 
-          <button class="btn btn-primary view mb-4">View Results</button>
+          <button 
+          (click)="navigate(testResult.test_id)"
+          class="btn btn-primary view mb-4">View Results</button>
         </div>
     </div>
 </div>

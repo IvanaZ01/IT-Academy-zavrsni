@@ -1,0 +1,19 @@
+<div class="wrapper mx-auto shadow">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Student</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of results" [class.student]="result.user_id === user.user_id">
+          <td>{{ (result.first_name +" "+ result.last_name) | titlecase}}</td>
+          <td>
+              {{result.score}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

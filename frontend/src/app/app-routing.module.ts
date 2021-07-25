@@ -12,6 +12,7 @@ import { TestResultsComponent } from './components/pages/test-results/test-resul
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { CreateResultsComponent } from './components/pages/admin/create-results/create-results.component';
+import { ResultComponent } from './components/pages/result/result.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,9 @@ const routes: Routes = [
   },
   {
     path:'test', component: TestsComponent,  canActivate: [ AuthGuardService ]
+  },
+  {
+    path:'result', component: ResultComponent,  canActivate: [ AuthGuardService ]
   },
   {
     path:'admin/user', component: UsersComponent, canActivate: [ AuthGuardAdmin ]

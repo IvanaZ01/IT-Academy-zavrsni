@@ -40,7 +40,6 @@ export class TestResultsComponent implements OnInit {
         this.testsForDrop = success.filter(test => test.status != "Finished").map(test => {
           return {id: test.test_id, name: test.name}
         })
-        console.log(this.testsForDrop)
       }
     )
   }
@@ -53,9 +52,12 @@ export class TestResultsComponent implements OnInit {
     )
   }
 
-  openEditor(id?:number){
-    this.router.navigateByUrl('admin/create-results?testId=' + id)
+  navigate(id?:number){
+    if(this.user === "ADMIN"){
+      this.router.navigateByUrl('admin/create-results?testId=' + id)
+    }else{
+      this.router.navigateByUrl(`result?testId=${id}`)
+    }
   }
-
 
 }

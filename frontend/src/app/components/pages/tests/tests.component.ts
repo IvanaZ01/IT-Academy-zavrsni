@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Test } from 'src/app/models/Test.model';
 import { GroupService } from 'src/app/services/api/group.service';
@@ -26,7 +27,8 @@ export class TestsComponent implements OnInit {
     private testService: TestService,
     private userStoreService: UserStoreService,
     private notifications: ToastrService,
-    private groupService: GroupService
+    private groupService: GroupService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -107,5 +109,8 @@ export class TestsComponent implements OnInit {
     this.editActive.open = false
   }
 
+  navigate(id:number){
+    this.router.navigateByUrl(`result?testId=${id}`)
+  }
 
 }

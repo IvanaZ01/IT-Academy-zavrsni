@@ -25,4 +25,8 @@ export class TestResultService {
   getResultsByTest(testId:number){
      return this.http.get(this.url + "-get-all/" + `${testId}`)
   }
+
+  editTestResult(resource: any){
+    return this.http.put(this.url + `-update/${resource.testId}/${resource.userId}`, resource);
+  }
 }
