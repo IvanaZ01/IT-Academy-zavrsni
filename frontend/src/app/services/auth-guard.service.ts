@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
+import { Router, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from './auth.service';
 
@@ -17,10 +17,10 @@ export class AuthGuardService implements CanActivate {
 
   }
 
-  async canActivate(): Promise<boolean> {
+ canActivate(route:any, state:RouterStateSnapshot){
     if (!this._authService.isAuthenticated()) {
       this._notificationService.error('You need to be authenticated.')
-      await this._router.navigateByUrl('/login');
+      this._router.navigate(['/login'], { queryParams: {returnUrl: state.url}});
       
       return false;
     }

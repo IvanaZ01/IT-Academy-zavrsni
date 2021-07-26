@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/User.model';
 import { UserService } from 'src/app/services/api/user.service';
@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private notification: ToastrService,
     private userStoreService: UserStoreService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
      ) { }
 
   ngOnInit(): void {
@@ -29,7 +30,9 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', success.token)
         localStorage.setItem('user', JSON.stringify(success.user))
         this.userStoreService.updateUser(success.user);
-        this.router.navigateByUrl('/dashboard')
+
+        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl')
+        this.router.navigate([returnUrl || '/dashboard'])
       },
       err =>{
         this.notification.error(err.error.msg)
