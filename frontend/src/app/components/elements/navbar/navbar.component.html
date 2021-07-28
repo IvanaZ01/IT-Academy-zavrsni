@@ -8,8 +8,11 @@
           [class.open]="navOpen"
             class="burger-menu"
           ></div>
-      </div>
-
+        </div>
+        <i 
+        (click)="navigate('dashboard')"
+        *ngIf="this.user"
+         class="bi bi-grid-3x3-gap dash-icon"></i>
     <button
     *ngIf="!user"
     class="login-btn btn btn-light"

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserStoreService } from 'src/app/services/user-store.service';
@@ -10,14 +10,15 @@ import { UserStoreService } from 'src/app/services/user-store.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  navOpen = false
+  @Input() navOpen = false
   @Output() toggle = new EventEmitter();
   user:any = null;
 
   constructor(
     private router: Router, 
     private userStoreService: UserStoreService, 
-    private notifications: ToastrService) {
+    private notifications: ToastrService,
+    ) {
   }
   
   ngOnInit(): void {

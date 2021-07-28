@@ -5,9 +5,10 @@ class="wrapper"
 <router-outlet></router-outlet>
 </div>
 <div
+(click)="setNavState(false)"
 class="background"
 [ngClass]="{open: navOpen, none: destroy}"
 ></div>
 
-<app-navbar (toggle)="setNavState($event)"></app-navbar>
+<app-navbar [navOpen]="navOpen" (toggle)="setNavState($event)"></app-navbar>
 

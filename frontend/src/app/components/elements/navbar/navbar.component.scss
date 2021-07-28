@@ -1,5 +1,8 @@
 nav{
     user-select: none;
+    position: fixed;
+    left: 0;
+    right: 0;
 }
 
 .burger{
@@ -56,9 +59,10 @@ nav{
     background-color:  #4D2254;
     width: 200px;
     height: 100%;
-    position: absolute;
+    position: fixed;
     transition: all 200ms ease;
     left: 0;
+    top: 50px;
 
     a{
         color: #d1b3d6;
@@ -81,6 +85,15 @@ nav{
     &:hover{
         background-color: lighten(#CF30CF, 40%);
     }
+}
+
+.dash-icon{
+    color: #333;
+    position:absolute;
+    top:  2px;
+    left: 70px;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 
