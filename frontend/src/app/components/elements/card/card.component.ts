@@ -29,6 +29,8 @@ export class CardComponent implements OnInit {
   }
 
   sendEdit(){
+    this.data.imageUrl = this.data.image_url
+    delete this.data.image_url;
     this.edit.emit(this.data)
     this.scroll.emit()
   }

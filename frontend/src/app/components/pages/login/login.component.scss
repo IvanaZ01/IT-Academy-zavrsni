@@ -40,3 +40,24 @@
 .purple{
     background-color: #810E94;
 }
+
+.invalidForm {
+    border: 2px solid red;
+    border-radius: 7px;
+    border-left: 0;
+}
+
+.parent{
+    position: relative;
+}
+
+.required{
+    position: absolute;
+    top: -15px;
+    right: 0px;
+    z-index: 500;
+    color: red;
+    font-size: .7rem;
+    text-align: right;
+    
+}

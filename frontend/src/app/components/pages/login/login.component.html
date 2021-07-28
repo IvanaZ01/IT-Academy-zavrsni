@@ -1,29 +1,52 @@
 <div class="card d-flex flex-row justify-content-between shadow">
 
-    <div class="form">
+    <div class="form" ngForm #f="ngForm">
         <h1 class="mb-5">User login </h1>
-        <div class="form-group mb-3">
 
-          <div class="input-group mb-3">
+        <div class="input-group mb-3 parent">
+            <p *ngIf="!username.valid && username.touched" class="required">Required*</p>
             <div class="input-group-prepend">
               <span class="input-group-text purple" id="basic-addon1"><i class="bi bi-person icon"></i></span>
             </div>
-            <input [(ngModel)]="user.username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <input 
+            ngModel
+             #username="ngModel"
+            name="username"
+            [class.invalidForm]="!username.valid && username.touched" 
+            [(ngModel)]="user.username" 
+            type="text" 
+            class="form-control" 
+            placeholder="Username" 
+            aria-label="Username" 
+            required 
+            aria-describedby="basic-addon1">
           </div>
-        </div>
 
-          <div class="input-group mb-3">
+          
+          <div class="input-group mb-3 parent">
+            <p *ngIf="!password.valid && password.touched" class="required">Required*</p>
             <div class="input-group-prepend">
               <span class="input-group-text purple" id="basic-addon1"><i class="bi bi-key icon"></i></span>
             </div>
+
             <input 
             (keyup.enter)="loginUser()"
-            [(ngModel)]="user.password" type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+            [class.invalidForm]="!password.valid && password.touched" 
+            [(ngModel)]="user.password" 
+            ngModel
+            name="password"
+            #password="ngModel"
+            required type="password" 
+            class="form-control" 
+            placeholder="Password" 
+            aria-label="Username" 
+            aria-describedby="basic-addon1">
           </div>
 
         <div class="form-check mb-4">
           <input 
           [(ngModel)]="user.remember"
+          name="remember"
           type="checkbox" 
           class="form-check-input" 
           id="exampleCheck1">
@@ -31,6 +54,7 @@
         </div>
         <button 
         (click)="loginUser()"
+        [disabled]="!username.valid || !password.valid"
         class="login-btn btn btn-light">Login</button>
     </div>
 

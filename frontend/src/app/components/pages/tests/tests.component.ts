@@ -18,6 +18,7 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 export class TestsComponent implements OnInit {
   tests:Test[]=[];
   user:User|null = null;
+  invalidDate = false;
 
   //edit and create 
   selectGroups = [{group_id: ''}]
@@ -49,6 +50,18 @@ export class TestsComponent implements OnInit {
         this.selectGroups = this.selectGroups.concat(success)
       }
     )
+  }
+
+  validate(){
+    const date = this.newTest.date!.split("/")
+    const dateCode = parseFloat(date.join(''))
+    if(!dateCode || date[0].length !== 4 || date[1].length !== 2 || date[2].length !== 2){
+      this.invalidDate = true
+      return
+    }else{
+      this.invalidDate = false
+      this.editActive.mode == 'Schedule test'? this.createTest() : this.updateTest()
+    }
   }
 
   getAllTests(){

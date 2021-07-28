@@ -70,7 +70,7 @@ export class NewsComponent implements OnInit {
 
   setUpForEdit(toEdit: any) {
     this.editMode = 'Edit post';
-    this.newPost = {...toEdit};
+    this.newPost = {...toEdit}
   }
 
   scroll(info: any) {

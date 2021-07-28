@@ -5,19 +5,45 @@
     <div class="card-body">
         <h5 class="card-title mb-4">{{editMode}}</h5>
       <div class="form-group mb-3">
-        <input [(ngModel)]="newPost.title" type="text" class="form-control" placeholder="Post title" />
+        <input 
+        [(ngModel)]="newPost.title" 
+        name="title" 
+        ngModel 
+        #title="ngModel" 
+        required
+        type="text" 
+        class="form-control" 
+        placeholder="Post title" />
       </div>
       
       <div class="form-group mb-3">
-        <textarea [(ngModel)]="newPost.body" class="form-control" id="exampleFormControlTextarea1" placeholder="Post body" rows="5"></textarea>
+        <textarea 
+        ngModel 
+        #postBody="ngModel" 
+        name="body"
+        required
+        [(ngModel)]="newPost.body" 
+        class="form-control"
+         id="exampleFormControlTextarea1" 
+         placeholder="Post body" 
+         rows="5"></textarea>
       </div>
 
       <div class="form-group mb-5">
-        <input [(ngModel)]="newPost.image_url" type="text" class="form-control" placeholder="Image url" />
+        <input 
+        ngModel 
+        #image="ngModel" 
+        name="image"
+        required
+        [(ngModel)]="newPost.imageUrl" 
+        type="text" 
+        class="form-control" 
+        placeholder="Image url"/>
       </div>
       
       <div class="post-btns">
           <button 
+          [disabled]="!title.valid || (!image.valid && !postBody.valid)"
           (click)="editMode == 'Edit post'? updatePost() : createPost()"
           class="btn btn-primary post-btn">{{editMode == 'Edit post'? 'Save' : 'Post'}}</button>
           <button 

@@ -1,27 +1,55 @@
 <div [class.out]="!editActive.open" class="editor mx-auto mb-4 shadow">
-    <div class="form">
-        <h2 class="mb-4">{{editActive.mode}}</h2> <span (click)="closeEditor()" class="close-editor">X</span>
+  <div class="form">
+    <h2 class="mb-4">{{ editActive.mode }}</h2>
+    <span (click)="closeEditor()" class="close-editor">X</span>
 
-        <div class="form-group">
-          <input [(ngModel)]="newTeacher.firstName" type="text" class="form-control mb-4" placeholder="First name">
-        </div>
+    <div class="form-group">
+      <input
+        ngModel
+        name="firstName"
+        #firstName="ngModel"
+        required
+        [(ngModel)]="newTeacher.firstName"
+        type="text"
+        class="form-control mb-4"
+        placeholder="First name"
+      />
+    </div>
 
-        <div class="form-group">
-          <input [(ngModel)]="newTeacher.lastName" placeholder="Last name" type="text" class="form-control mb-4" >
-        </div>
+    <div class="form-group">
+      <input
+        ngModel
+        name="lastName"
+        #lastName="ngModel"
+        required
+        [(ngModel)]="newTeacher.lastName"
+        placeholder="Last name"
+        type="text"
+        class="form-control mb-4"
+      />
+    </div>
 
-        <button 
-        (click)="editActive.mode == 'Add teacher'? addTeacher() : updateTeacher()"
-        class="btn btn-primary save-btn">Save</button>
-      </div>
-</div> 
+    <button
+      [disabled]="!firstName.valid || !lastName.valid"
+      (click)="
+        editActive.mode == 'Add teacher' ? addTeacher() : updateTeacher()
+      "
+      class="btn btn-primary save-btn"
+    >
+      Save
+    </button>
+  </div>
+</div>
 
-<button 
-(click)="openEditor('Add teacher', {})"
-class="btn btn-primary create-test-btn">Add new teacher</button>
+<button
+  (click)="openEditor('Add teacher', {})"
+  class="btn btn-primary create-test-btn"
+>
+  Add new teacher
+</button>
 
 <div [class.wrapper-move]="editActive.open" class="wrapper mt-5">
-<table class="table mx-auto table-bordered table-hover shadow">
+  <table class="table mx-auto table-bordered table-hover shadow">
     <thead>
       <tr>
         <th *ngIf="user?.role == 'ADMIN'" scope="col">Teacher ID</th>
@@ -32,18 +60,19 @@ class="btn btn-primary create-test-btn">Add new teacher</button>
     </thead>
     <tbody>
       <tr *ngFor="let teacher of teachers">
-
-        <td *ngIf="user?.role == 'ADMIN'">{{teacher.teacher_id}}</td>
-        <td>{{teacher.first_name | titlecase}}</td>
-        <td>{{teacher.last_name | titlecase}}</td>
+        <td *ngIf="user?.role == 'ADMIN'">{{ teacher.teacher_id }}</td>
+        <td>{{ teacher.first_name | titlecase }}</td>
+        <td>{{ teacher.last_name | titlecase }}</td>
 
         <td class="text-center" *ngIf="user?.role == 'ADMIN'">
-            <i 
+          <i
             (click)="deleteTeacher(teacher.teacher_id!)"
-            class="bi bi-trash admin-icons"></i>
-            <i
+            class="bi bi-trash admin-icons"
+          ></i>
+          <i
             (click)="openEditor('Edit', teacher)"
-            class="bi bi-filter-circle admin-icons"></i>
+            class="bi bi-filter-circle admin-icons"
+          ></i>
         </td>
       </tr>
     </tbody>

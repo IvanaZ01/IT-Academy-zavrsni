@@ -17,6 +17,9 @@ import { ResultComponent } from './components/pages/result/result.component';
 
 const routes: Routes = [
   {
+    path: '', redirectTo: '/home', pathMatch: 'full'
+  },
+  {
     path: 'home', component: NewsComponent
   },
   {
@@ -49,6 +52,9 @@ const routes: Routes = [
   {
     path:'admin/create-results',component: CreateResultsComponent, canActivate: [ AuthGuardAdmin ]
   },
+  {
+    path: '**', redirectTo: '/home'
+  }
 ];
 
 @NgModule({

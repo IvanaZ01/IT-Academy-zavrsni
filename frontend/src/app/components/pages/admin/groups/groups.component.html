@@ -1,33 +1,66 @@
 <div [class.out]="!editActive.open" class="editor mx-auto mb-4 shadow">
-    <div class="form">
-        <h2 class="mb-4">{{editActive.mode}}</h2> <span (click)="closeEditor()" class="close-editor">X</span>
+  <div class="form">
+    <h2 class="mb-4">{{ editActive.mode }}</h2>
+    <span (click)="closeEditor()" class="close-editor">X</span>
 
-        <div class="form-group">
-          <input [(ngModel)]="newGroup.level" type="text" class="form-control mb-1" placeholder="Level">
-        </div>
-        
-        <div class="form-group">
-            <label [class.hidden]="newGroup.teacherId"  class="label">Select teacher for the group</label>
-            <select [(ngModel)]="newGroup.teacherId" class="form-control mb-1">
-                <option *ngFor="let teacher of selectTeachers" [value]="teacher!.teacher_id">{{(teacher.first_name + ' ' + teacher.last_name) | titlecase }}</option>
-            </select>
-        </div>
-        
-        <button 
-        (click)="editActive.mode == 'Create group'? createGroup() : updateGroup()"
-        class="btn btn-primary save-btn">Save</button>
-      </div>
-</div> 
+    <div class="form-group">
+      <input
+        ngModel
+        name="level"
+        #level="ngModel"
+        required
+        [(ngModel)]="newGroup.level"
+        type="text"
+        class="form-control mb-1"
+        placeholder="Level"
+      />
+    </div>
 
-<button 
-(click)="openEditor('Create group', {})"
-class="btn btn-primary create-test-btn">Create new group</button>
+    <div class="form-group">
+      <label [class.hidden]="newGroup.teacherId" class="label"
+        >Select teacher for the group</label
+      >
+      <select
+        ngModel
+        name="teacher"
+        #teacher="ngModel"
+        required
+        [(ngModel)]="newGroup.teacherId"
+        class="form-control mb-1"
+      >
+        <option
+          *ngFor="let teacher of selectTeachers"
+          [value]="teacher!.teacher_id"
+        >
+          {{ teacher.first_name + " " + teacher.last_name | titlecase }}
+        </option>
+      </select>
+    </div>
+
+    <button
+    [disabled]="!teacher.valid || !level.valid"
+      (click)="
+        editActive.mode == 'Create group' ? createGroup() : updateGroup()
+      "
+      class="btn btn-primary save-btn"
+    >
+      Save
+    </button>
+  </div>
+</div>
+
+<button
+  (click)="openEditor('Create group', {})"
+  class="btn btn-primary create-test-btn"
+>
+  Create new group
+</button>
 
 <div [class.wrapper-move]="editActive.open" class="wrapper mt-5">
-<table class="table mx-auto table-bordered table-hover shadow">
+  <table class="table mx-auto table-bordered table-hover shadow">
     <thead>
       <tr>
-        <th  scope="col">Group ID</th>
+        <th scope="col">Group ID</th>
         <th scope="col">Level</th>
         <th scope="col">Teacher ID</th>
         <th scope="col" class="text-center">Actions</th>
@@ -35,18 +68,19 @@ class="btn btn-primary create-test-btn">Create new group</button>
     </thead>
     <tbody>
       <tr *ngFor="let group of groups">
-
-        <td>{{group.group_id}}</td>
-        <td>{{group.level | titlecase}}</td>
-        <td>{{group.teacher_id }}</td>
+        <td>{{ group.group_id }}</td>
+        <td>{{ group.level | titlecase }}</td>
+        <td>{{ group.teacher_id }}</td>
 
         <td class="text-center">
-            <i 
+          <i
             (click)="deleteGroup(group.group_id!)"
-            class="bi bi-trash admin-icons"></i>
-            <i
+            class="bi bi-trash admin-icons"
+          ></i>
+          <i
             (click)="openEditor('Edit', group)"
-            class="bi bi-filter-circle admin-icons"></i>
+            class="bi bi-filter-circle admin-icons"
+          ></i>
         </td>
       </tr>
     </tbody>

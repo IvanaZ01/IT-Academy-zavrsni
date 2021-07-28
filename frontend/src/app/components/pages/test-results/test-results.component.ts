@@ -55,7 +55,7 @@ export class TestResultsComponent implements OnInit {
   }
 
   navigate(id?:number){
-    if(this.user === "ADMIN"){
+    if(this.user?.role === "ADMIN"){
       this.router.navigateByUrl('admin/create-results?testId=' + id)
     }else{
       this.router.navigateByUrl(`result?testId=${id}`)

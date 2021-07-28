@@ -3,7 +3,7 @@
 [options]="testsForDrop"></ngbd-dropdown-basic>
 
 <div class="wrapper mt-5">
-    <div class="cards row justify-content-evenly">
+    <div class="cards row justify-content-around">
         <div *ngFor="let testResult of testResults" class="card col-sm-12 col-xl-4 shadow mb-3">
           <h3 class="card-title mt-3 mb-3">{{ testResult.name }}</h3>
           <p class="ids" *ngIf="user?.role === 'ADMIN'">Test ID: {{ testResult.test_id }}</p>

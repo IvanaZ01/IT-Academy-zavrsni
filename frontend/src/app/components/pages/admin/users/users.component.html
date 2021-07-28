@@ -1,59 +1,119 @@
 <div [class.out]="!editActive.open" class="editor mx-auto mb-4 shadow">
-    <div class="form">
-        <h2 class="mb-4">{{editActive.mode}}</h2> <span (click)="closeEditor()" class="close-editor">X</span>
+  <div class="form">
+    <h2 class="mb-4">{{ editActive.mode }}</h2>
+    <span (click)="closeEditor()" class="close-editor">X</span>
 
-        <div class="form-group">
-          <input [(ngModel)]="newUser.firstName" type="text" class="form-control mb-4" placeholder="First name">
-        </div>
+    <div class="form-group">
+      <input
+        ngModel
+        #firstName="ngModel"
+        name="firstName"
+        required
+        [(ngModel)]="newUser.firstName"
+        type="text"
+        class="form-control mb-4"
+        placeholder="First name"
+      />
+    </div>
 
-        <div class="form-group">
-          <input [(ngModel)]="newUser.lastName" placeholder="Last name" type="text" class="form-control mb-4" >
-        </div>
-        <div class="form-group">
-          <input [(ngModel)]="newUser.username" placeholder="Username" type="text" class="form-control" >
-        </div>
-        
-        <div class="form-group">
-            <label [class.hidden]="newUser.groupId"  class="label">Select Group ID</label>
-            <select [(ngModel)]="newUser.groupId" class="form-control mb-1">
-                <option *ngFor="let group of selectGroups" [value]="group.group_id">{{group.group_id}}</option>
-            </select>
-        </div>
-        
-        <div 
-        [ngClass]="{
-            'mb-5': editActive.mode === 'Edit',
-            'mb-4': editActive.mode === 'Add user'
-        }"
-        class="form-group">
-            <label [class.hidden]="newUser.role"  class="label">Select Role</label>
-            <select [(ngModel)]="newUser.role" class="form-control mb-1">
-                <option value="USER">USER</option>
-                <option value="ADMIN">ADMIN</option>
-            </select>
-        </div>
+    <div class="form-group">
+      <input
+        ngModel
+        #lastName="ngModel"
+        name="lastName"
+        [(ngModel)]="newUser.lastName"
+        required
+        placeholder="Last name"
+        type="text"
+        class="form-control mb-4"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        ngModel
+        #username="ngModel"
+        name="username"
+        required
+        [(ngModel)]="newUser.username"
+        placeholder="Username"
+        type="text"
+        class="form-control"
+      />
+    </div>
 
-        <div 
-        *ngIf="editActive.mode == 'Add user'"
-        class="form-group mb-5">
-          <input [(ngModel)]="newUser.password" placeholder="Password" type="password" class="form-control" >
-        </div>
-        
-        <button 
-        (click)="editActive.mode == 'Add user'? addUser() : updateUser()"
-        class="btn btn-primary save-btn">Save</button>
-      </div>
-</div> 
+    <div class="form-group">
+      <label [class.hidden]="newUser.groupId" class="label"
+        >Select Group ID</label
+      >
+      <select [(ngModel)]="newUser.groupId" class="form-control mb-1">
+        <option *ngFor="let group of selectGroups" [value]="group.group_id">
+          {{ group.group_id }}
+        </option>
+      </select>
+    </div>
 
-<button 
-(click)="openEditor('Add user', {})"
-class="btn btn-primary create-test-btn">Add new user</button>
+    <div
+      [ngClass]="{
+        'mb-5': editActive.mode === 'Edit',
+        'mb-4': editActive.mode === 'Add user'
+      }"
+      class="form-group"
+    >
+      <label [class.hidden]="newUser.role" class="label">Select Role</label>
+      <select
+        ngModel
+        #role="ngModel"
+        name="role"
+        required
+        [(ngModel)]="newUser.role"
+        class="form-control mb-1"
+      >
+        <option value="USER">USER</option>
+        <option value="ADMIN">ADMIN</option>
+      </select>
+    </div>
+
+    <div [hidden]="editActive.mode != 'Add user'" class="form-group mb-5">
+      <input
+        ngModel
+        name="pass"
+        #pass="ngModel"
+        [required]="editActive.mode == 'Add user'"
+        [(ngModel)]="newUser.password"
+        placeholder="Password"
+        type="password"
+        class="form-control"
+      />
+    </div>
+
+    <button
+      [disabled]="
+        !firstName.valid ||
+        !lastName.valid ||
+        !username.valid ||
+        !pass.valid ||
+        !role.valid
+      "
+      (click)="editActive.mode == 'Add user' ? addUser() : updateUser()"
+      class="btn btn-primary save-btn"
+    >
+      Save
+    </button>
+  </div>
+</div>
+
+<button
+  (click)="openEditor('Add user', {})"
+  class="btn btn-primary create-test-btn"
+>
+  Add new user
+</button>
 
 <div [class.wrapper-move]="editActive.open" class="wrapper mt-5">
-<table class="table mx-auto table-bordered table-hover shadow">
+  <table class="table mx-auto table-bordered table-hover shadow">
     <thead>
       <tr>
-        <th  scope="col">User ID</th>
+        <th scope="col">User ID</th>
         <th scope="col">First name</th>
         <th scope="col">Last name</th>
         <th scope="col">Username</th>
@@ -64,21 +124,22 @@ class="btn btn-primary create-test-btn">Add new user</button>
     </thead>
     <tbody>
       <tr *ngFor="let user of users">
-
-        <td>{{user.user_id}}</td>
-        <td>{{user.first_name | titlecase}}</td>
-        <td>{{user.last_name | titlecase}}</td>
-        <td>{{user.username}}</td>
-        <td>{{user.role}}</td>
-        <td>{{user.group_id}}</td>
+        <td>{{ user.user_id }}</td>
+        <td>{{ user.first_name | titlecase }}</td>
+        <td>{{ user.last_name | titlecase }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.role }}</td>
+        <td>{{ user.group_id }}</td>
 
         <td class="text-center">
-            <i 
+          <i
             (click)="deleteUser(user.user_id!)"
-            class="bi bi-trash admin-icons"></i>
-            <i
+            class="bi bi-trash admin-icons"
+          ></i>
+          <i
             (click)="openEditor('Edit', user)"
-            class="bi bi-filter-circle admin-icons"></i>
+            class="bi bi-filter-circle admin-icons"
+          ></i>
         </td>
       </tr>
     </tbody>

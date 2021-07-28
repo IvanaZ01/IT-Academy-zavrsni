@@ -2,27 +2,26 @@
         <div class="form">
             <h2 class="mb-4">{{editActive.mode}}</h2> <span (click)="closeEditor()" class="close-editor">X</span>
                 <label [class.hidden]="newTest.groupId"  class="label">Select Group ID</label>
-                <select [(ngModel)]="newTest.groupId" class="form-control mb-1">
+                <select ngModel name="group" #groupSelect="ngModel" required [(ngModel)]="newTest.groupId" class="form-control mb-4">
                     <option *ngFor="let group of selectGroups" [value]="group.group_id">{{group.group_id}}</option>
                   </select>
 
-                  <label [class.hidden]="!newTest.status?.length || newTest.status"  class="label">Select status</label>
-                <select [(ngModel)]="newTest.status" class="form-control mb-4">
-                    <option value="">Unfinished</option>
-                    <option value="Finished">Finished</option>
-                  </select>
-
             <div class="form-group">
-              <input [(ngModel)]="newTest.name" type="text" class="form-control mb-4" placeholder="Test name">
+              <input ngModel name="test" #testName="ngModel" required [(ngModel)]="newTest.name" type="text" class="form-control mb-4" placeholder="Test name">
             </div>
 
 
             <div class="form-group">
-              <input [(ngModel)]="newTest.date" placeholder="Test date(yyyy/mm/dd)" type="text" class="form-control mb-4" >
+              <input ngModel name="date" #date="ngModel" required [(ngModel)]="newTest.date" placeholder="Test date(yyyy/mm/dd)" type="text" class="form-control mb-4" >
             </div>
- 
+
+            <div 
+            *ngIf="invalidDate && newTest.date"
+            class="alert alert-danger text-center">Invalid date format. yyyy/mm/dd</div>
+
             <button 
-            (click)="editActive.mode == 'Schedule test'? createTest() : updateTest()"
+            [disabled]="!testName.valid || !date.valid || !groupSelect.valid"
+            (click)="validate()"
             class="btn btn-primary save-btn">Save</button>
           </div>
     </div> 
