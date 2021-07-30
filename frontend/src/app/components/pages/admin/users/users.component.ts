@@ -86,6 +86,7 @@ export class UsersComponent implements OnInit {
     this.newUser.role = info.role || ''
     this.newUser.groupId = info.group_id || null
     this.newUser.id = info.user_id || ''
+    this.newUser.password = info.password|| ''
 
   }
 
