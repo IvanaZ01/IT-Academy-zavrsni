@@ -5,7 +5,7 @@ const deleteUser = (req, res) => {
         return res.status(401).json({msg: "You need to be administrator"})
     }
     const userId = req.params.id
-	const sql = `DELETE FROM user WHERE user_id = ?;`;
+	const sql = `UPDATE user SET status = 'DELETED' WHERE user_id = ?;`;
 
     db.query(sql, [userId], (err, result)=>{
         if(err){

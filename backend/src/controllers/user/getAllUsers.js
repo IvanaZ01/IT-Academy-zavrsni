@@ -4,7 +4,7 @@ const getAllUsers = (req, res) => {
     if(req.user.role !== "ADMIN"){
         return res.status(401).json({msg: "You need to be administrator"})
     }
-	const sql = `SELECT * FROM user`;
+	const sql = `SELECT * FROM user WHERE status = 'ACTIVE'`;
 
     db.query(sql, (err, result)=>{
         if(err){

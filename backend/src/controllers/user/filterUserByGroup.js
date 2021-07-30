@@ -5,7 +5,7 @@ const filterUserByGroup = (req, res) => {
         return res.status(401).json({msg: "You need to be administrator"})
     }
     const groupId = req.params.groupId
-	const sql = `SELECT * FROM user WHERE group_id = ?`;
+	const sql = `SELECT * FROM user WHERE group_id = ? AND status = 'ACTIVE'`;
 
     db.query(sql, [groupId], (err, result)=>{
         if(err){

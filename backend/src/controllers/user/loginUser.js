@@ -5,7 +5,7 @@ const db = require('../../../db-config')
 const loginUser = async(req,res) => {
     const { username, password, remember} = req.body
 
-    const sql = `SELECT * FROM user WHERE username = ?`
+    const sql = `SELECT * FROM user WHERE username = ? AND status = 'ACTIVE'`
     db.query(sql, [username], async(err, result)=>{
         if(err)throw err
         if(!result.length) {
